@@ -4,28 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Thạch Thị Trâm</title>
+    <meta name="description" content="Portfolio phong cách game 8-bit NES hoài cổ của Thạch Thị Trâm - Sinh viên Công nghệ thông tin, Đại học Giao thông Vận tải TP.HCM (UTH).">
+    <title>Portfolio - Thạch Thị Trâm | UTH IT Student</title>
+    
+    <!-- Google Fonts with 100% Vietnamese Diacritics Support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="css/nes.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header class="navbar">
-
-        <a href="#home" class="logo">
-            <img src="images/logo.png" alt="Logo">
+    <!-- ===================================================
+         HEADER / RETRO NAVBAR
+         =================================================== -->
+    <header class="navbar" id="navbar">
+        <a href="#home" class="logo-wrapper">
+            <img src="images/logo.png" alt="Logo Tram Dev">
+            <span class="logo-brand">TRAM.DEV</span>
         </a>
 
-        <nav class="nav-menu">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
+        <!-- Navigation Links -->
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#interests" class="nav-link">Interests</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </nav>
+
+        <!-- Retro Controls & Achievements -->
+        <div class="nav-actions">
+            <!-- Sound FX Toggle -->
+            <button type="button" class="nes-btn is-warning sfx-btn" id="sfx-toggle" title="Bật/Tắt âm thanh 8-bit">
+                <span id="sfx-icon">🔊</span> SFX
+            </button>
+
+            <!-- Trophy Achievements Modal Button -->
+            <button type="button" class="nes-btn is-primary trophy-nav-btn" id="open-trophy-btn" title="Bảng thành tích">
+                <i class="nes-icon trophy is-small"></i>
+            </button>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button type="button" class="nes-btn mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
+                ☰
+            </button>
+        </div>
     </header>
+
+    <!-- ===================================================
+         HERO BANNER (PIXEL TV WITH RETRO TYPING ANIMATION)
+         =================================================== -->
     <section id="home" class="banner">
         <div class="tv-text">
             <p class="line1">Let's Play</p>
@@ -34,45 +69,523 @@
             <p class="line4">WELCOME TO MY WORLD</p>
             <a href="#about" class="start-btn">▶ START</a>
         </div>
-        <!-- SAO LẤP LÁNH -->
+
+        <!-- Twinkling Stars -->
         <span class="star star1">✦</span>
         <span class="star star2">✦</span>
         <span class="star star3">✦</span>
         <span class="star star4">✦</span>
         <span class="star star5">✦</span>
-
     </section>
-    
-    <!-- GIỚI THIỆU BẢN THÂN -->
-    <section id="about" class="about">
 
-        <div class="about-container">
-
-            <!-- KHUNG AVATAR -->
-            <div class="about-photo">
-                <div class="photo-back"></div>
-
-                <div class="photo-frame">
-                    <img src="images/avatar.jpg" alt="Ảnh đại diện">
+    <!-- ===================================================
+         RPG STATUS HUD BAR
+         =================================================== -->
+    <div class="rpg-hud-section">
+        <div class="container">
+            <div class="nes-container is-dark with-title rpg-hud-card">
+                <p class="title">PLAYER STATUS</p>
+                <div class="rpg-hud-grid">
+                    <div class="hud-stat-item">
+                        <span class="hud-label">PLAYER:</span>
+                        <span class="hud-value">THẠCH THỊ TRÂM</span>
+                    </div>
+                    <div class="hud-stat-item">
+                        <span class="hud-label">ROLE:</span>
+                        <span class="hud-value">SINH VIÊN CNTT @ UTH (CLC) 🎓</span>
+                    </div>
+                    <div class="hud-stat-item">
+                        <span class="hud-label">HP (PASSION): 100/100</span>
+                        <progress class="nes-progress is-success" value="100" max="100"></progress>
+                    </div>
+                    <div class="hud-stat-item">
+                        <span class="hud-label">MP (KNOWLEDGE): 99/99</span>
+                        <progress class="nes-progress is-primary" value="99" max="100"></progress>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- NỘI DUNG GIỚI THIỆU -->
-            <div class="about-info">
-
-                <!-- Thêm nội dung giới thiệu tại đây -->
-
+    <!-- ===================================================
+         SECTION 1: ABOUT ME – GIỚI THIỆU BẢN THÂN
+         =================================================== -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="nes-icon star is-small"></i> ABOUT ME – GIỚI THIỆU BẢN THÂN <i class="nes-icon star is-small"></i>
+                </h2>
+                <p class="section-subtitle">[ CHARACTER PROFILE & CAREER GOALS ]</p>
             </div>
 
-        </div>
+            <div class="about-grid">
+                <!-- Character Avatar & Equipment -->
+                <div class="character-card">
+                    <div class="avatar-frame">
+                        <img src="images/avatar.jpg" alt="Avatar Thạch Thị Trâm">
+                        <div class="character-tag">THẠCH THỊ TRÂM • IT STUDENT</div>
+                    </div>
 
+                    <!-- RPG Equipment Slots -->
+                    <div class="nes-container is-dark with-title equipment-box">
+                        <p class="title">ACADEMIC INFO</p>
+                        <ul class="equipment-list">
+                            <li>
+                                <span class="equipment-slot">🎓 TRƯỜNG:</span>
+                                <span class="equipment-item">ĐH GTVT TP.HCM (UTH)</span>
+                            </li>
+                            <li>
+                                <span class="equipment-slot">🏛️ ĐƠN VỊ:</span>
+                                <span class="equipment-item">Viện Đào Tạo CLC</span>
+                            </li>
+                            <li>
+                                <span class="equipment-slot">💻 CHUYÊN NGÀNH:</span>
+                                <span class="equipment-item">Công Nghệ Thông Tin</span>
+                            </li>
+                            <li>
+                                <span class="equipment-slot">✨ TINH THẦN:</span>
+                                <span class="equipment-item">Cầu tiến • Ham học hỏi</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bio & Career Goals -->
+                <div class="about-dialogue-col">
+                    <div class="nes-balloon from-left is-dark rpg-speech">
+                        <p>XIN CHÀO, TÔI LÀ <strong>THẠCH THỊ TRÂM</strong>! Sinh viên ngành Công nghệ thông tin.</p>
+                    </div>
+
+                    <div class="nes-container with-title is-rounded is-dark bio-card">
+                        <p class="title">BIOGRAPHY</p>
+                        <p class="bio-text">
+                            Mình hiện đang theo học ngành <strong>Công nghệ thông tin tại Trường Đại học Giao thông Vận tải TP.HCM (UTH)</strong>, thuộc Viện Đào tạo Chất lượng cao.
+                            <br><br>
+                            Mình luôn cố gắng học hỏi, tích lũy kiến thức và hoàn thiện bản thân thông qua quá trình học tập trên giảng đường và qua các dự án thực tế.
+                        </p>
+
+                        <!-- Career Goals Box -->
+                        <div class="career-goals-box">
+                            <p style="color: var(--accent-pink); font-size: 0.8rem; margin-bottom: 12px; font-weight: bold;">
+                                🎯 MỤC TIÊU NGHỀ NGHIỆP
+                            </p>
+                            <div class="career-goal-item">
+                                <div class="career-goal-title">
+                                    <span class="nes-badge"><span class="is-warning">MỤC TIÊU NGẮN HẠN</span></span>
+                                </div>
+                                <p class="career-goal-desc">
+                                    Hoàn thiện kiến thức chuyên môn, nâng cao kỹ năng thực hành và tích lũy kinh nghiệm thực tế qua các đồ án và dự án công nghệ.
+                                </p>
+                            </div>
+                            <div class="career-goal-item">
+                                <div class="career-goal-title">
+                                    <span class="nes-badge"><span class="is-success">MỤC TIÊU DÀI HẠN</span></span>
+                                </div>
+                                <p class="career-goal-desc">
+                                    Trở thành một nhân sự có chuyên môn vững vàng trong lĩnh vực Công nghệ thông tin, có khả năng vận dụng kiến thức linh hoạt và hiệu quả vào công việc thực tế.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="about-cta-btns" style="margin-top: 24px;">
+                            <a href="#contact" class="nes-btn is-primary">⚔️ Let's Connect!</a>
+                            <a href="#projects" class="nes-btn is-success">📜 Xem Dự Án</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- ===================================================
+         SECTION 2: SKILLS – KỸ NĂNG
+         =================================================== -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="nes-icon heart is-small"></i> SKILLS – KỸ NĂNG <i class="nes-icon heart is-small"></i>
+                </h2>
+                <p class="section-subtitle">[ TECHNICAL ARSENAL & SOFT SKILLS ]</p>
+            </div>
 
+            <div class="skills-grid">
+                <!-- Kỹ năng chuyên môn -->
+                <div class="nes-container with-title is-dark skill-card">
+                    <p class="title">KỸ NĂNG CHUYÊN MÔN</p>
+                    <div class="badge-cloud">
+                        <div class="badge-item"><span class="nes-badge"><span class="is-error">HTML</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">CSS</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-warning">JavaScript (Cơ bản)</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-success">Python</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">SQL Server</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-dark">Git / GitHub</span></span></div>
+                    </div>
+                </div>
 
-<script src="js/main.js"></script>
+                <!-- Kỹ năng mềm -->
+                <div class="nes-container with-title is-dark skill-card">
+                    <p class="title">KỸ NĂNG MỀM</p>
+                    <div class="badge-cloud">
+                        <div class="badge-item"><span class="nes-badge"><span class="is-success">Làm việc nhóm</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-warning">Giải quyết vấn đề</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">Tự học (Self-learning)</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-error">Quản lý thời gian</span></span></div>
+                    </div>
+                </div>
 
+                <!-- Định hướng & Rèn luyện -->
+                <div class="nes-container with-title is-dark skill-card">
+                    <p class="title">ĐỊNH HƯỚNG & PHÁT TRIỂN</p>
+                    <div class="badge-cloud">
+                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">Thiết kế UI/UX</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-warning">Kiểm thử phần mềm</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-success">Thuyết trình báo cáo</span></span></div>
+                        <div class="badge-item"><span class="nes-badge"><span class="is-dark">Lập trình Socket</span></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ===================================================
+         SECTION 3: EDUCATION – HỌC VẤN
+         =================================================== -->
+    <section id="education" class="section education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="nes-icon coin is-small"></i> EDUCATION – HỌC VẤN <i class="nes-icon coin is-small"></i>
+                </h2>
+                <p class="section-subtitle">[ ACADEMIC MILESTONES & ACTIVITIES ]</p>
+            </div>
+
+            <div class="timeline-list">
+                <!-- UTH Education Card -->
+                <div class="nes-container with-title is-rounded is-dark timeline-card">
+                    <p class="title">TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH)</p>
+                    <span class="timeline-time">🎓 HIỆN TẠI • SINH VIÊN CHÍNH QUY</span>
+                    <h3 class="timeline-title">Ngành Công Nghệ Thông Tin – Viện Đào Tạo Chất Lượng Cao</h3>
+                    <p class="timeline-desc" style="margin-top: 12px;">
+                        <strong>Hoạt động tiêu biểu:</strong>
+                    </p>
+                    <ul class="nes-list is-disc" style="font-size: 0.74rem; line-height: 1.8; color: #cfd0e6; margin-top: 8px;">
+                        <li>Tham gia tích cực vào các đồ án nhóm, phối hợp hiệu quả cùng các thành viên.</li>
+                        <li>Thực hành trực tiếp xây dựng ứng dụng phần mềm (Client–Server, Web/Desktop app, cơ sở dữ liệu).</li>
+                        <li>Kiểm thử phần mềm, phát hiện lỗi và tối ưu hóa chức năng.</li>
+                        <li>Thực hiện thuyết trình báo cáo và bảo vệ đồ án chuyên môn trước giảng viên.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 4: PROJECTS – DỰ ÁN
+         =================================================== -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="nes-icon trophy is-small"></i> PROJECTS – DỰ ÁN ĐÃ THỰC HIỆN <i class="nes-icon trophy is-small"></i>
+                </h2>
+                <p class="section-subtitle">[ HIGHLIGHTED QUESTS & EXPERIENCES ]</p>
+            </div>
+
+            <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                <!-- Project 01: FLUX Multi File Downloader -->
+                <div class="nes-container with-title is-rounded is-dark quest-card">
+                    <p class="title">PROJECT 01</p>
+                    <div>
+                        <!-- Project Screenshot -->
+                        <div class="quest-img-wrapper">
+                            <img src="images/project_flux.jpg" alt="Ảnh giao diện FLUX Multi File Downloader">
+                        </div>
+
+                        <div class="quest-header">
+                            <span class="quest-rank">MÔ HÌNH CLIENT–SERVER</span>
+                            <span class="quest-exp">RANK: S</span>
+                        </div>
+                        <h3 class="quest-title">FLUX MULTI FILE DOWNLOADER</h3>
+                        
+                        <p class="quest-desc">
+                            Ứng dụng tải nhiều tệp tin theo mô hình Client–Server, hỗ trợ tìm kiếm, quản lý và theo dõi tiến trình tải dữ liệu an toàn và ổn định.
+                        </p>
+
+                        <div class="quest-role">
+                            <strong>Vai trò:</strong> Thiết kế một số chức năng giao diện, kiểm thử và viết báo cáo đồ án.
+                        </div>
+
+                        <div class="quest-tags">
+                            <span class="quest-tag">Python</span>
+                            <span class="quest-tag">PySide6</span>
+                            <span class="quest-tag">Socket</span>
+                            <span class="quest-tag">TLS/SSL</span>
+                        </div>
+                    </div>
+                    <div class="quest-actions">
+                        <a href="https://github.com/trawm06" target="_blank" rel="noopener noreferrer" class="nes-btn is-primary quest-btn">
+                            <i class="nes-icon github is-small"></i> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 02: Quản Lý Vật Tư Xây Dựng -->
+                <div class="nes-container with-title is-rounded is-dark quest-card">
+                    <p class="title">PROJECT 02</p>
+                    <div>
+                        <!-- Project Screenshot -->
+                        <div class="quest-img-wrapper">
+                            <img src="images/project_inventory.jpg" alt="Ảnh giao diện Quản Lý Vật Tư Xây Dựng">
+                        </div>
+
+                        <div class="quest-header">
+                            <span class="quest-rank">DATABASE & WAREHOUSE</span>
+                            <span class="quest-exp">RANK: S</span>
+                        </div>
+                        <h3 class="quest-title">QUẢN LÝ VẬT TƯ XÂY DỰNG</h3>
+                        
+                        <p class="quest-desc">
+                            Hệ thống quản lý vật tư, kho hàng và các nghiệp vụ nhập, xuất, chuyển kho dành cho doanh nghiệp xây dựng với cơ sở dữ liệu quan hệ chặt chẽ.
+                        </p>
+
+                        <div class="quest-role">
+                            <strong>Vai trò:</strong> Xây dựng chức năng chuyển kho, xử lý tương tranh dữ liệu và kiểm thử hệ thống.
+                        </div>
+
+                        <div class="quest-tags">
+                            <span class="quest-tag">Python</span>
+                            <span class="quest-tag">Streamlit</span>
+                            <span class="quest-tag">SQL Server</span>
+                            <span class="quest-tag">Concurrency</span>
+                        </div>
+                    </div>
+                    <div class="quest-actions">
+                        <a href="https://github.com/trawm06" target="_blank" rel="noopener noreferrer" class="nes-btn is-primary quest-btn">
+                            <i class="nes-icon github is-small"></i> GitHub Repo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 5: INTERESTS – SỞ THÍCH
+         =================================================== -->
+    <section id="interests" class="section interests-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="nes-icon star is-small"></i> INTERESTS – SỞ THÍCH <i class="nes-icon star is-small"></i>
+                </h2>
+                <p class="section-subtitle">[ PASSIONS & LEISURE ACTIVITIES ]</p>
+            </div>
+
+            <div class="interests-grid">
+                <!-- Interest 1: Chơi Game -->
+                <div class="nes-container with-title is-dark interest-card">
+                    <p class="title">GAMING</p>
+                    <span class="interest-icon">🎮</span>
+                    <h3 class="interest-name">Chơi Game</h3>
+                    <p class="interest-desc">
+                        Niềm đam mê với thế giới game giải trí, rèn luyện tư duy phản xạ chiến thuật và tìm cảm hứng từ các phong cách thiết kế retro 8-bit sống động.
+                    </p>
+                </div>
+
+                <!-- Interest 2: Xem Phim -->
+                <div class="nes-container with-title is-dark interest-card">
+                    <p class="title">CINEMA</p>
+                    <span class="interest-icon">🎬</span>
+                    <h3 class="interest-name">Xem Phim</h3>
+                    <p class="interest-desc">
+                        Thư giãn sau những giờ code căng thẳng, khám phá những câu chuyện đa chiều và thưởng thức góc quay nghệ thuật, thẩm mỹ thị giác.
+                    </p>
+                </div>
+
+                <!-- Interest 3: Editing -->
+                <div class="nes-container with-title is-dark interest-card">
+                    <p class="title">CREATIVE</p>
+                    <span class="interest-icon">🎨</span>
+                    <h3 class="interest-name">Chỉnh Sửa Ảnh & Video</h3>
+                    <p class="interest-desc">
+                        Yêu thích thiết kế, chỉnh sửa hình ảnh và biên tập video (Editing), tạo nên những nội dung bắt mắt và giàu cảm xúc.
+                    </p>
+                </div>
+
+                <!-- Interest 4: Chứng chỉ / Hành trình -->
+                <div class="nes-container with-title is-dark interest-card">
+                    <p class="title">ACHIEVEMENT</p>
+                    <span class="interest-icon">📜</span>
+                    <h3 class="interest-name">Chứng Chỉ / Giải Thưởng</h3>
+                    <p class="interest-desc">
+                        Hiện tại chưa có chứng chỉ chính thức. Đang trên lộ trình học tập, rèn luyện và sẵn sàng chinh phục các kỳ thi chứng chỉ chuyên môn sắp tới!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 6: CONTACT – LIÊN HỆ
+         =================================================== -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="nes-icon gmail is-small"></i> LET'S CONNECT! (LIÊN HỆ) <i class="nes-icon gmail is-small"></i>
+                </h2>
+                <p class="section-subtitle">[ CẢM ƠN BẠN ĐÃ GHÉ THĂM PORTFOLIO CỦA MÌNH! ]</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Channels -->
+                <div class="nes-container with-title is-dark guild-card">
+                    <p class="title">THÔNG TIN KẾT NỐI</p>
+                    <p class="guild-message">
+                        Cảm ơn bạn đã ghé thăm Portfolio của mình! Nếu bạn có bất kỳ câu hỏi, cơ hội thực tập, đồ án hoặc muốn kết nối thảo luận về công nghệ, đừng ngần ngại gửi liên hệ nhé!
+                    </p>
+                    <ul class="contact-channels">
+                        <li class="channel-item">
+                            <span class="channel-label">📧 EMAIL:</span>
+                            <span class="channel-val">thachthitram2k6@gmail.com</span>
+                        </li>
+                        <li class="channel-item">
+                            <span class="channel-label">📞 SĐT:</span>
+                            <span class="channel-val">0356796802</span>
+                        </li>
+                        <li class="channel-item">
+                            <span class="channel-label">🏫 TRƯỜNG:</span>
+                            <span class="channel-val">ĐH Giao thông Vận tải TP.HCM (UTH)</span>
+                        </li>
+                        <li class="channel-item">
+                            <span class="channel-label">🏛️ ĐƠN VỊ:</span>
+                            <span class="channel-val">Viện Đào tạo Chất lượng cao</span>
+                        </li>
+                    </ul>
+
+                    <div class="social-btns">
+                        <a href="mailto:thachthitram2k6@gmail.com" class="nes-btn is-primary">
+                            <i class="nes-icon gmail is-small"></i> Gửi Email
+                        </a>
+                        <a href="tel:0356796802" class="nes-btn is-success">
+                            📞 Gọi 0356796802
+                        </a>
+                        <a href="https://github.com/trawm06" target="_blank" rel="noopener noreferrer" class="nes-btn">
+                            <i class="nes-icon github is-small"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="nes-container with-title is-dark form-card">
+                    <p class="title">SEND MESSAGE</p>
+                    <form id="retro-contact-form" class="contact-form">
+                        <div class="nes-field">
+                            <label for="contact-name">Họ và tên:</label>
+                            <input type="text" id="contact-name" class="nes-input is-dark" placeholder="Ví dụ: Nguyễn Văn A" required>
+                        </div>
+
+                        <div class="nes-field">
+                            <label for="contact-email">Email:</label>
+                            <input type="email" id="contact-email" class="nes-input is-dark" placeholder="email@example.com" required>
+                        </div>
+
+                        <div class="nes-field">
+                            <label for="contact-message">Nội dung tin nhắn:</label>
+                            <textarea id="contact-message" class="nes-textarea is-dark" placeholder="Nhập nội dung lời nhắn tại đây..." rows="4" required></textarea>
+                        </div>
+
+                        <button type="submit" class="nes-btn is-success">
+                            <i class="nes-icon heart is-small"></i> SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         INTERACTIVE CORNER MASCOT COMPANION
+         =================================================== -->
+    <div class="mascot-companion" id="mascot-companion">
+        <div class="nes-balloon from-right is-dark mascot-balloon" id="mascot-balloon">
+            <p id="mascot-text">Xin chào! Mình là trợ thủ phép thuật của Trâm (UTH IT)! ✨</p>
+        </div>
+        <button type="button" class="mascot-sprite-btn" id="mascot-sprite-btn" aria-label="Interact with mascot">
+            <span class="mascot-click-indicator">TAP ME!</span>
+            <img src="images/mascot.jpg" alt="Mascot Mage Girl">
+        </button>
+    </div>
+
+    <!-- ===================================================
+         ACHIEVEMENTS / TROPHY RETRO MODAL
+         =================================================== -->
+    <div class="modal-overlay" id="trophy-modal">
+        <div class="nes-dialog is-rounded is-dark retro-modal">
+            <div class="modal-header">
+                <h3>🏆 THÔNG TIN & THÀNH TÍCH</h3>
+                <button type="button" class="nes-btn is-error modal-close-btn" id="close-trophy-modal">✖</button>
+            </div>
+
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <i class="nes-icon star is-medium"></i>
+                    <div class="achievement-text">
+                        <h4>UTH IT STUDENT</h4>
+                        <p>Sinh viên ngành CNTT - Trường ĐH Giao thông Vận tải TP.HCM (Viện Đào tạo CLC)</p>
+                    </div>
+                </li>
+                <li class="achievement-item">
+                    <i class="nes-icon trophy is-medium"></i>
+                    <div class="achievement-text">
+                        <h4>PYTHON & DATABASE</h4>
+                        <p>Đã hoàn thành dự án FLUX File Downloader & Quản Lý Vật Tư Xây Dựng</p>
+                    </div>
+                </li>
+                <li class="achievement-item">
+                    <i class="nes-icon heart is-medium"></i>
+                    <div class="achievement-text">
+                        <h4>LET'S CONNECT!</h4>
+                        <p>Email: thachthitram2k6@gmail.com | SĐT: 0356796802</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="modal-social-row">
+                <a href="mailto:thachthitram2k6@gmail.com" class="nes-btn is-primary">
+                    <i class="nes-icon gmail is-small"></i> Email
+                </a>
+                <a href="https://github.com/trawm06" target="_blank" rel="noopener noreferrer" class="nes-btn">
+                    <i class="nes-icon github is-small"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         FOOTER
+         =================================================== -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© 2026 Thạch Thị Trâm • Sinh viên CNTT UTH. Crafted with ❤️ & 8-Bit Pixel Magic.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a> •
+                <a href="#about">About</a> •
+                <a href="#skills">Skills</a> •
+                <a href="#education">Education</a> •
+                <a href="#projects">Projects</a> •
+                <a href="#interests">Interests</a> •
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#home" class="nes-btn is-warning back-to-top">▲ TOP</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 
 </body>
 

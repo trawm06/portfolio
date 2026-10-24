@@ -1,3 +1,33 @@
+@import url('nes.min.css');
+
+/* ===================================================
+   8-BIT RETRO PORTFOLIO - DESIGN SYSTEM & TOKENS
+   Flawless Vietnamese Diacritics Support + Unified Dark Retro Theme
+   =================================================== */
+
+:root {
+    /* Color Palette */
+    --bg-dark: #202236;
+    --bg-darker: #171826;
+    --bg-card: #292b46;
+    --bg-card-hover: #313352;
+    --bg-pink-soft: #fff5fc;
+    --accent-pink: #ffa2cb;
+    --accent-pink-hover: #ff75b5;
+    --accent-purple: #8758ff;
+    --accent-yellow: #f7d51d;
+    --accent-green: #92cc41;
+    --accent-blue: #209cee;
+    --accent-red: #e76e55;
+    --text-dark: #212529;
+    --text-light: #ffffff;
+    --text-muted: #b8b9cf;
+    
+    /* Typography System (100% Vietnamese Support) */
+    --font-pixel: 'Press Start 2P', cursive, monospace;
+    --font-arcade: 'Chakra Petch', 'Press Start 2P', sans-serif;
+    --font-body: 'Be Vietnam Pro', 'Chakra Petch', sans-serif;
+}
 
 * {
     margin: 0;
@@ -5,51 +35,244 @@
     box-sizing: border-box;
 }
 
-/* NAVBAR */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+    background-image: 
+        radial-gradient(rgba(255, 162, 203, 0.08) 15%, transparent 16%),
+        radial-gradient(rgba(146, 204, 65, 0.05) 15%, transparent 16%);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle Retro CRT Scanline overlay */
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%);
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* ===================================================
+   UNIFIED DARK THEME FOR ALL NES.CSS COMPONENTS
+   (Prevents default white backgrounds from obscuring content)
+   =================================================== */
+
+.nes-container {
+    background-color: var(--bg-card) !important;
+    color: var(--text-light) !important;
+    border-color: #3b3c5a !important;
+}
+
+.nes-container.with-title > .title {
+    background-color: var(--bg-card) !important;
+    color: var(--accent-pink) !important;
+    font-family: var(--font-arcade) !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.8px;
+}
+
+.nes-container.is-dark {
+    background-color: var(--bg-darker) !important;
+    color: var(--text-light) !important;
+    border-color: #4a4b6c !important;
+}
+
+.nes-container.is-dark.with-title > .title {
+    background-color: var(--bg-darker) !important;
+    color: var(--accent-pink) !important;
+}
+
+/* Fix NES Button Font & Colors */
+.nes-btn {
+    font-family: var(--font-arcade) !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Fix NES Badge Font */
+.nes-badge span {
+    font-family: var(--font-arcade) !important;
+    font-weight: 700 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.5px;
+}
+
+/* Base link styles */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Section Common Styling */
+.section {
+    padding: 85px 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-title {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--accent-pink);
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    font-family: var(--font-arcade);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+}
+
+/* ===================================================
+   NAVBAR
+   =================================================== */
 .navbar {
-    height: 70px;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #292b46;
-    padding: 0 50px;
+    background: var(--bg-card);
+    padding: 0 32px;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 1000;
+    border-bottom: 4px solid #141424;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-.logo img {
-    width: 100px;
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-wrapper img {
+    width: 54px;
+    height: auto;
     image-rendering: pixelated;
-    transform: translateY(8px)
+    transition: transform 0.2s ease;
+}
+
+.logo-wrapper:hover img {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.logo-brand {
+    font-family: var(--font-pixel);
+    font-size: 0.95rem;
+    color: var(--accent-pink);
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 18px;
 }
 
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
+.nav-link {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    position: relative;
+    border: 2px solid transparent;
+    letter-spacing: 0.5px;
 }
 
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: pink;
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-pink);
+    border-color: var(--accent-pink);
+    background: rgba(255, 162, 203, 0.12);
+    box-shadow: 2px 2px 0px #000;
 }
 
-/* BANNER */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sfx-btn {
+    font-family: var(--font-pixel) !important;
+    font-size: 0.72rem !important;
+    padding: 8px 12px !important;
+    cursor: pointer;
+}
+
+.trophy-nav-btn {
+    padding: 6px 12px !important;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 1.1rem !important;
+    padding: 6px 12px !important;
+}
+
+/* ===================================================
+   HERO BANNER (PIXEL TV WITH ANIMATED TYPING)
+   =================================================== */
 .banner {
     width: 100%;
     aspect-ratio: 2.7 / 1;
     background: url("../images/background1.png") center / 100% 100% no-repeat;
     position: relative;
+    border-bottom: 4px solid #141424;
 }
 
-/* CHỮ TRÊN TIVI */
+/* TV screen text in pure 8-bit pixel font */
 .tv-text {
     position: absolute;
     top: 23%;
@@ -58,7 +281,7 @@
     text-align: center;
     transform: rotate(-4deg);
     color: #111;
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--font-pixel);
     line-height: 1.8;
 }
 
@@ -68,31 +291,37 @@
 }
 
 .line2 {
-    font-size: 1.8vw;
+    font-size: 1.8vw !important;
+    color: #ff3377;
+    text-shadow: 1px 1px 0 #fff;
 }
 
-/* NÚT START */
 .start-btn {
     display: inline-block;
     visibility: hidden;
     margin-top: 0.8vw;
-    padding: 0.5vw 1vw;
+    padding: 0.5vw 1.2vw;
     background: #ffa2cb;
     color: #29243c;
     text-decoration: none;
+    font-family: var(--font-pixel);
     font-size: 0.8vw;
     border: 2px solid #34314f;
+    box-shadow: 2px 2px 0px #000;
+    transition: all 0.15s ease;
 }
 
 .start-btn:hover {
     background: #ff75b5;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px #000;
 }
 
 .start-btn.show {
     visibility: visible;
 }
 
-/* SAO LẤP LÁNH */
+/* Twinkling Stars */
 .star {
     position: absolute;
     color: #fff4c5;
@@ -101,37 +330,905 @@
     animation: twinkle 2s infinite alternate;
 }
 
-/* Vị trí từng ngôi sao */
 .star1 { top: 12%; left: 8%; }
 .star2 { top: 8%; left: 32%; animation-delay: 0.5s; }
 .star3 { top: 25%; left: 60%; animation-delay: 1s; }
 .star4 { top: 15%; left: 75%; animation-delay: 1.5s; }
 .star5 { top: 45%; left: 68%; animation-delay: 0.8s; }
 
-/* Hiệu ứng */
 @keyframes twinkle {
     from {
         opacity: 0.2;
         transform: scale(0.5);
     }
-
     to {
         opacity: 1;
         transform: scale(1.3);
     }
 }
 
-/* ABOUT ME */
-.about {
-    padding: 80px 10%;
-    background: #fff5fc;
+/* ===================================================
+   RPG STATUS HUD BAR
+   =================================================== */
+.rpg-hud-section {
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 40px;
 }
 
-/* Tiêu đề */
-.about h2 {
+.rpg-hud-card {
+    background: var(--bg-darker) !important;
+}
+
+.rpg-hud-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    align-items: center;
+}
+
+.hud-stat-item {
+    font-family: var(--font-arcade);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.hud-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent-pink);
+    letter-spacing: 0.5px;
+}
+
+.hud-value {
+    color: var(--accent-yellow);
+    font-weight: 700;
+}
+
+.rpg-hud-card .nes-progress {
+    height: 18px;
+}
+
+/* ===================================================
+   SECTION 1: ABOUT ME
+   =================================================== */
+.about-section {
+    background: #1c1d30;
+    border-top: 4px solid #141424;
+    border-bottom: 4px solid #141424;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 36px;
+    align-items: start;
+}
+
+.character-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.avatar-frame {
+    background: var(--bg-darker);
+    border: 4px solid #ffffff;
+    box-shadow: 6px 6px 0px #000;
+    padding: 12px;
     text-align: center;
-    color: #d86ba5;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 24px;
-    margin-bottom: 50px;
+}
+
+.avatar-frame img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    image-rendering: pixelated;
+    border: 2px solid #333;
+    display: block;
+}
+
+.character-tag {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--accent-pink);
+    letter-spacing: 0.5px;
+}
+
+.equipment-box {
+    background: var(--bg-darker) !important;
+}
+
+.equipment-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.88rem;
+}
+
+.equipment-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #3a3b59;
+    padding-bottom: 8px;
+}
+
+.equipment-slot {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    color: var(--accent-yellow);
+    letter-spacing: 0.5px;
+}
+
+.equipment-item {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: #ffffff;
+    text-align: right;
+}
+
+.about-dialogue-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Speech Balloon in Dark Mode */
+.rpg-speech {
+    font-family: var(--font-arcade);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.7;
+    background: var(--bg-darker) !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.rpg-speech strong {
+    color: var(--accent-yellow);
+    font-weight: 700;
+}
+
+.bio-card {
+    background: var(--bg-card) !important;
+}
+
+.bio-text {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1.85;
+    margin-bottom: 24px;
+    color: #e4e4f0;
+}
+
+.career-goals-box {
+    margin-top: 20px;
+    padding: 18px;
+    background: #141424;
+    border: 2px dashed #404163;
+}
+
+.career-goal-item {
+    margin-bottom: 16px;
+}
+
+.career-goal-item:last-child {
+    margin-bottom: 0;
+}
+
+.career-goal-title {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.career-goal-desc {
+    font-family: var(--font-body);
+    color: #d8d9ec;
+    font-size: 0.92rem;
+    line-height: 1.75;
+}
+
+.about-cta-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* ===================================================
+   SECTION 2: SKILLS – KỸ NĂNG
+   =================================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+.skill-card {
+    background: var(--bg-card) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.badge-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.badge-item {
+    cursor: default;
+    transition: transform 0.15s ease;
+}
+
+.badge-item:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.badge-item .nes-badge {
+    height: 36px;
+}
+
+/* ===================================================
+   SECTION 3: EDUCATION – HỌC VẤN
+   =================================================== */
+.timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline-card {
+    background: var(--bg-card) !important;
+    position: relative;
+    padding: 24px !important;
+}
+
+.timeline-time {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent-yellow);
+    margin-bottom: 8px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.timeline-title {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--accent-pink);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.timeline-desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #ffffff;
+}
+
+.timeline-card .nes-list {
+    margin-left: 20px;
+}
+
+.timeline-card .nes-list li {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: #d8d9ec;
+    margin-bottom: 6px;
+}
+
+/* ===================================================
+   SECTION 4: PROJECTS – DỰ ÁN
+   =================================================== */
+.projects-section {
+    background: #191a2b;
+    border-top: 4px solid #141424;
+    border-bottom: 4px solid #141424;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 32px;
+}
+
+.quest-card {
+    background: var(--bg-card) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-color: #3b3c5a !important;
+}
+
+.quest-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 6px 6px 0px #000 !important;
+}
+
+.quest-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 3px solid #141424;
+    box-shadow: 3px 3px 0 #000;
+    background: #111;
+}
+
+.quest-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.quest-card:hover .quest-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.quest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #404163;
+}
+
+.quest-rank {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--accent-yellow);
+    letter-spacing: 0.5px;
+}
+
+.quest-exp {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--accent-green);
+}
+
+.quest-title {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--accent-pink);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.quest-desc {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: #d8d9ec;
+    margin-bottom: 14px;
+}
+
+.quest-role {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: #fff4c5;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    background: rgba(247, 213, 29, 0.1);
+    border-left: 3px solid var(--accent-yellow);
+    line-height: 1.6;
+}
+
+.quest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.quest-tag {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 0.75rem;
+    background: #171827;
+    color: var(--accent-yellow);
+    padding: 4px 10px;
+    border: 1px solid #4a4b6c;
+}
+
+.quest-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.quest-btn {
+    flex: 1;
+    text-align: center;
+    font-size: 0.88rem !important;
+}
+
+/* ===================================================
+   SECTION 5: INTERESTS – SỞ THÍCH
+   =================================================== */
+.interests-section {
+    background: #191a2b;
+    border-top: 4px solid #141424;
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.interest-card {
+    background: var(--bg-card) !important;
+    text-align: center;
+    padding: 24px 16px !important;
+    transition: transform 0.2s ease;
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+}
+
+.interest-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.interest-name {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--accent-pink);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.interest-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #d8d9ec;
+    line-height: 1.75;
+}
+
+/* ===================================================
+   SECTION 6: CONTACT – LIÊN HỆ
+   =================================================== */
+.contact-section {
+    background: #1c1d30;
+    border-top: 4px solid #141424;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: start;
+}
+
+.guild-card {
+    background: var(--bg-darker) !important;
+}
+
+.guild-message {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #d8d9ec;
+    margin-bottom: 24px;
+}
+
+.contact-channels {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+    font-size: 0.92rem;
+}
+
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.channel-label {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    color: var(--accent-pink);
+    min-width: 90px;
+    letter-spacing: 0.5px;
+}
+
+.channel-val {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--accent-yellow);
+    word-break: break-all;
+}
+
+.social-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-card {
+    background: var(--bg-card) !important;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nes-field label {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--accent-pink);
+    margin-bottom: 8px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.contact-form .nes-input,
+.contact-form .nes-textarea {
+    font-family: var(--font-body) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+    background-color: var(--bg-darker) !important;
+    color: #ffffff !important;
+    border-color: #4a4b6c !important;
+}
+
+.contact-form .nes-input::placeholder,
+.contact-form .nes-textarea::placeholder {
+    color: #8c8da8 !important;
+}
+
+.contact-form .nes-input:focus,
+.contact-form .nes-textarea:focus {
+    border-color: var(--accent-pink) !important;
+    outline: none;
+}
+
+.contact-form button[type="submit"] {
+    margin-top: 8px;
+    font-size: 0.95rem !important;
+    width: 100%;
+}
+
+/* ===================================================
+   CORNER MASCOT COMPANION
+   =================================================== */
+.mascot-companion {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.mascot-balloon {
+    margin-bottom: 12px;
+    max-width: 300px;
+    background: var(--bg-darker) !important;
+    color: #ffffff !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.88rem !important;
+    font-weight: 500;
+    line-height: 1.6;
+    pointer-events: auto;
+    cursor: pointer;
+    border: 2px solid var(--accent-yellow) !important;
+    box-shadow: 3px 3px 0 #000;
+    animation: balloonFloat 3s ease-in-out infinite alternate;
+}
+
+.mascot-balloon p {
+    color: #ffffff !important;
+}
+
+.mascot-sprite-btn {
+    pointer-events: auto;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.mascot-sprite-btn:hover {
+    transform: scale(1.1) translateY(-4px);
+}
+
+.mascot-sprite-btn img {
+    width: 84px;
+    height: 84px;
+    border: 4px solid #ffffff;
+    box-shadow: 4px 4px 0px #000;
+    image-rendering: pixelated;
+    display: block;
+    background: #2b2046;
+}
+
+.mascot-click-indicator {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: var(--accent-yellow);
+    color: #000;
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border: 1px solid #000;
+}
+
+@keyframes balloonFloat {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-5px); }
+}
+
+/* ===================================================
+   ACHIEVEMENTS / TROPHY MODAL
+   =================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.retro-modal {
+    max-width: 580px;
+    width: 100%;
+    background: var(--bg-card) !important;
+    color: #ffffff !important;
+    border-color: var(--accent-pink) !important;
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.modal-overlay.active .retro-modal {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #141424;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent-pink);
+}
+
+.modal-close-btn {
+    padding: 4px 10px !important;
+    font-size: 0.85rem !important;
+}
+
+.achievement-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: var(--bg-darker);
+    border: 2px solid #3b3c5a;
+}
+
+.achievement-text h4 {
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: var(--accent-yellow);
+}
+
+.achievement-text p {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: #cfd0e6;
+    line-height: 1.6;
+}
+
+.modal-social-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+.footer {
+    background: var(--bg-darker);
+    border-top: 4px solid #141424;
+    padding: 36px 0 50px 0;
+    text-align: center;
+    font-family: var(--font-arcade);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a:hover {
+    color: var(--accent-pink);
+}
+
+.back-to-top {
+    margin-top: 10px;
+    font-size: 0.8rem !important;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   =================================================== */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .character-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .tv-text > * {
+        font-size: 1.2vw;
+    }
+
+    .line2 {
+        font-size: 2vw !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+    }
+
+    .mobile-menu-toggle {
+        display: inline-block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-card);
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 4px solid #141424;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-menu.mobile-open {
+        display: flex;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .banner {
+        aspect-ratio: 2.2 / 1;
+    }
+
+    .tv-text {
+        top: 20%;
+        left: 20%;
+        width: 32%;
+    }
+
+    .tv-text > * {
+        font-size: 1.6vw;
+        margin-bottom: 0.4vw;
+    }
+
+    .line2 {
+        font-size: 2.6vw !important;
+    }
+
+    .start-btn {
+        font-size: 1.4vw;
+        padding: 0.8vw 1.6vw;
+    }
+
+    .mascot-companion {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .mascot-sprite-btn img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .mascot-balloon {
+        max-width: 240px;
+        font-size: 0.8rem !important;
+    }
 }

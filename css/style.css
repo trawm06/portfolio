@@ -1580,8 +1580,10 @@ section[id] {
 /* Tablet Portrait & Large Phones (< 768px) */
 @media (max-width: 768px) {
     .navbar {
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 0;
+        width: 100%;
         padding: 0 16px;
     }
 

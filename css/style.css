@@ -88,6 +88,10 @@ body::after {
     font-weight: 700 !important;
     font-size: 0.95rem !important;
     letter-spacing: 0.8px;
+    white-space: normal;
+    text-wrap: balance;
+    max-width: 90%;
+    line-height: 1.35;
 }
 
 .nes-container.is-dark {
@@ -111,6 +115,7 @@ body::after {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    white-space: nowrap !important;
 }
 
 /* Fix NES Badge Font */
@@ -119,6 +124,7 @@ body::after {
     font-weight: 700 !important;
     font-size: 0.82rem !important;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 /* Base link styles */
@@ -138,7 +144,7 @@ a {
 
 /* Section Common Styling */
 .section {
-    padding: 85px 0;
+    padding: 80px 0;
     position: relative;
 }
 
@@ -150,16 +156,22 @@ a {
 .section-title {
     font-family: var(--font-arcade);
     font-weight: 700;
-    font-size: 1.6rem;
+    font-size: clamp(1.05rem, 3.2vw, 1.6rem);
     color: var(--accent-pink);
     text-shadow: 2px 2px 0px #000;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: clamp(8px, 1.5vw, 16px);
     flex-wrap: wrap;
     letter-spacing: 1px;
+    text-wrap: balance;
+    text-align: center;
+}
+
+.section-title i.nes-icon {
+    flex-shrink: 0;
 }
 
 .section-subtitle {
@@ -294,12 +306,14 @@ section[id] {
 .tv-text > * {
     font-size: 1vw;
     margin-bottom: 0.6vw;
+    white-space: nowrap !important;
 }
 
 .line2 {
     font-size: 1.8vw !important;
     color: #ff3377;
     text-shadow: 1px 1px 0 #fff;
+    white-space: nowrap !important;
 }
 
 .start-btn {
@@ -315,6 +329,7 @@ section[id] {
     border: 2px solid #34314f;
     box-shadow: 2px 2px 0px #000;
     transition: all 0.15s ease;
+    white-space: nowrap !important;
 }
 
 .start-btn:hover {
@@ -385,11 +400,13 @@ section[id] {
     margin-bottom: 6px;
     color: var(--accent-pink);
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .hud-value {
     color: var(--accent-yellow);
     font-weight: 700;
+    text-wrap: pretty;
 }
 
 .rpg-hud-card .nes-progress {
@@ -442,6 +459,7 @@ section[id] {
     font-size: 0.85rem;
     color: var(--accent-pink);
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .equipment-box {
@@ -469,6 +487,7 @@ section[id] {
     font-weight: 700;
     color: var(--accent-yellow);
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .equipment-item {
@@ -493,6 +512,7 @@ section[id] {
     background: var(--bg-darker) !important;
     color: #ffffff !important;
     border-color: #ffffff !important;
+    text-wrap: pretty;
 }
 
 .rpg-speech strong {
@@ -510,6 +530,9 @@ section[id] {
     line-height: 1.85;
     margin-bottom: 24px;
     color: #e4e4f0;
+    text-align: justify;
+    text-justify: inter-word;
+    text-wrap: pretty;
 }
 
 .career-goals-box {
@@ -526,6 +549,7 @@ section[id] {
     margin-bottom: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .career-goal-item {
@@ -548,6 +572,9 @@ section[id] {
     color: #d8d9ec;
     font-size: 0.92rem;
     line-height: 1.75;
+    text-align: justify;
+    text-justify: inter-word;
+    text-wrap: pretty;
 }
 
 .about-cta-btns {
@@ -574,9 +601,20 @@ section[id] {
 /* Tech Icon Grid */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
+}
+
+.git-github-box {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.git-github-box i {
+    font-size: 2.2rem;
 }
 
 .tech-slot {
@@ -624,6 +662,7 @@ section[id] {
     text-align: center;
     margin-bottom: 6px;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .tech-badge {
@@ -635,6 +674,7 @@ section[id] {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
 }
 
 .tech-badge.is-web {
@@ -719,6 +759,7 @@ section[id] {
     font-weight: 700;
     color: var(--accent-cyan);
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .inspector-status {
@@ -728,6 +769,7 @@ section[id] {
     background: rgba(0, 255, 102, 0.12);
     padding: 2px 8px;
     border: 1px solid var(--accent-green);
+    white-space: nowrap;
 }
 
 .inspector-desc {
@@ -736,12 +778,13 @@ section[id] {
     color: #cfd0e6;
     line-height: 1.6;
     margin: 0;
+    text-wrap: pretty;
 }
 
 /* Passive Perks List */
 .perks-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 16px;
 }
 
@@ -780,13 +823,16 @@ section[id] {
     font-size: 0.88rem;
     font-weight: 700;
     color: var(--accent-yellow);
+    text-wrap: pretty;
+    line-height: 1.35;
 }
 
 .perk-tag {
     font-family: var(--font-body);
     font-size: 0.82rem;
     color: #a6a8cc;
-    line-height: 1.4;
+    line-height: 1.45;
+    text-wrap: pretty;
 }
 
 /* ===================================================
@@ -814,6 +860,7 @@ section[id] {
     margin-bottom: 8px;
     display: inline-block;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .timeline-title {
@@ -822,7 +869,8 @@ section[id] {
     font-size: 1.15rem;
     color: var(--accent-pink);
     margin-bottom: 12px;
-    line-height: 1.5;
+    line-height: 1.45;
+    text-wrap: pretty;
 }
 
 .timeline-desc {
@@ -831,6 +879,7 @@ section[id] {
     line-height: 1.8;
     color: #ffffff;
     margin-top: 12px;
+    text-wrap: pretty;
 }
 
 .timeline-activities-list {
@@ -844,6 +893,7 @@ section[id] {
 
 .timeline-activities-list li {
     margin-bottom: 6px;
+    text-wrap: pretty;
 }
 
 /* ===================================================
@@ -930,6 +980,7 @@ section[id] {
     color: var(--accent-pink);
     margin-bottom: 10px;
     letter-spacing: 0.5px;
+    text-wrap: balance;
 }
 
 .quest-desc {
@@ -938,6 +989,9 @@ section[id] {
     line-height: 1.8;
     color: #d8d9ec;
     margin-bottom: 14px;
+    text-wrap: pretty;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .quest-role {
@@ -949,6 +1003,7 @@ section[id] {
     background: rgba(247, 213, 29, 0.1);
     border-left: 3px solid var(--accent-yellow);
     line-height: 1.6;
+    text-wrap: pretty;
 }
 
 .quest-tags {
@@ -966,6 +1021,7 @@ section[id] {
     color: var(--accent-yellow);
     padding: 4px 10px;
     border: 1px solid #4a4b6c;
+    white-space: nowrap;
 }
 
 .quest-actions {
@@ -977,6 +1033,7 @@ section[id] {
     flex: 1;
     text-align: center;
     font-size: 0.88rem !important;
+    white-space: nowrap !important;
 }
 
 /* ===================================================
@@ -1051,6 +1108,9 @@ section[id] {
     line-height: 1.85;
     color: #d8d9ec;
     margin-bottom: 24px;
+    text-wrap: pretty;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .contact-channels {
@@ -1074,13 +1134,15 @@ section[id] {
     color: var(--accent-pink);
     min-width: 90px;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .channel-val {
     font-family: var(--font-body);
     font-weight: 500;
     color: var(--accent-yellow);
-    word-break: break-all;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .social-btns {
@@ -1598,10 +1660,12 @@ section[id] {
     .tv-text > * {
         font-size: 2.1cqw;
         margin-bottom: 1cqw;
+        white-space: nowrap !important;
     }
 
     .line2 {
         font-size: 3.6cqw !important;
+        white-space: nowrap !important;
     }
 
     .start-btn {
@@ -1609,6 +1673,7 @@ section[id] {
         padding: 1.2cqw 2.6cqw;
         margin-top: 1cqw;
         margin-bottom: 0;
+        white-space: nowrap !important;
     }
 
     .star {
@@ -1672,6 +1737,10 @@ section[id] {
 @media (max-width: 576px) {
     body {
         padding-top: 66px;
+    }
+
+    .perks-list {
+        grid-template-columns: 1fr;
     }
 
     section[id] {

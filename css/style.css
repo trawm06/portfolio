@@ -38,6 +38,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: clip;
 }
 
 body {
@@ -46,7 +47,8 @@ body {
     font-family: var(--font-body);
     font-size: 15px;
     line-height: 1.7;
-    overflow-x: hidden;
+    overflow-x: clip;
+    padding-top: 76px;
     position: relative;
     background-image: 
         radial-gradient(rgba(255, 162, 203, 0.08) 15%, transparent 16%),
@@ -178,12 +180,17 @@ a {
     justify-content: space-between;
     background: var(--bg-card);
     padding: 0 32px;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
     border-bottom: 4px solid #141424;
-    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+section[id] {
+    scroll-margin-top: 86px;
 }
 
 .logo-wrapper {
@@ -782,37 +789,6 @@ a {
     line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-    .tech-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
-
-    .tech-slot {
-        padding: 12px 6px 8px;
-    }
-
-    .tech-icon-box {
-        font-size: 2.2rem;
-    }
-
-    .tech-inspector-hud {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .inspector-desc {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 /* ===================================================
    SECTION 3: EDUCATION – HỌC VẤN
    =================================================== */
@@ -881,7 +857,7 @@ a {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 32px;
 }
 
@@ -1287,6 +1263,97 @@ a {
 }
 
 /* ===================================================
+   RETRO 2-WAY VERTICAL SCROLL DOCK (EDGE CONTROLLER)
+   =================================================== */
+.retro-scroll-dock {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(100%);
+    z-index: 995;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #141424;
+    border: 3px solid #3b3c5a;
+    border-right: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-shadow: -4px 4px 0px rgba(0, 0, 0, 0.6);
+    padding: 6px 3px;
+    gap: 3px;
+    user-select: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Appears only when scrolling */
+.retro-scroll-dock.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+}
+
+.retro-scroll-dock:hover {
+    border-color: var(--accent-pink);
+    box-shadow: -4px 4px 12px rgba(255, 51, 119, 0.35);
+}
+
+.dock-btn {
+    background: transparent;
+    border: 2px solid transparent;
+    font-family: var(--font-pixel);
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 8px 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    transition: all 0.15s ease;
+    outline: none;
+    border-radius: 3px;
+}
+
+.dock-btn-up {
+    color: var(--accent-yellow);
+}
+
+.dock-btn-up:hover {
+    background: rgba(255, 204, 0, 0.15);
+    border-color: var(--accent-yellow);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+}
+
+.dock-btn-down {
+    color: var(--accent-cyan);
+}
+
+.dock-btn-down:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--accent-cyan);
+    color: #ffffff;
+    transform: translateY(2px);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.dock-btn:active {
+    transform: scale(0.9);
+}
+
+.dock-divider {
+    width: 75%;
+    height: 2px;
+    background: #3b3c5a;
+    margin: 2px 0;
+}
+
+/* ===================================================
    ACHIEVEMENTS / TROPHY MODAL
    =================================================== */
 .modal-overlay {
@@ -1421,6 +1488,8 @@ a {
 /* ===================================================
    RESPONSIVE DESIGN (TABLETS & MOBILE)
    =================================================== */
+
+/* Tablet Landscape (< 992px) */
 @media (max-width: 992px) {
     .navbar {
         padding: 0 20px;
@@ -1429,10 +1498,11 @@ a {
     .about-grid,
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 28px;
     }
 
     .character-card {
-        max-width: 400px;
+        max-width: 480px;
         margin: 0 auto;
     }
 
@@ -1445,13 +1515,18 @@ a {
     }
 }
 
+/* Tablet Portrait & Large Phones (< 768px) */
 @media (max-width: 768px) {
     .navbar {
-        position: relative;
+        position: sticky;
+        top: 0;
+        padding: 0 16px;
     }
 
     .mobile-menu-toggle {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .nav-menu {
@@ -1464,7 +1539,8 @@ a {
         flex-direction: column;
         padding: 20px;
         border-bottom: 4px solid #141424;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        z-index: 1001;
     }
 
     .nav-menu.mobile-open {
@@ -1474,37 +1550,108 @@ a {
     .nav-link {
         width: 100%;
         text-align: center;
-        padding: 10px;
+        padding: 12px;
+    }
+
+    .section {
+        padding: 48px 0;
     }
 
     .section-title {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
     }
 
+    .section-subtitle {
+        font-size: 0.8rem;
+    }
+
+    /* Banner TV (mobile): crop the image around the whole TV.
+       Everything is proportional to the banner width (cqw units),
+       so the TV screen and the text always scale together. */
     .banner {
-        aspect-ratio: 2.2 / 1;
+        container-type: inline-size;
+        aspect-ratio: 1.25 / 1;
+        min-height: 0;
+        background: url("../images/background1.png") no-repeat;
+        background-size: 240% auto;
+        background-position: 18.4% 50%;
     }
 
+    /* Text box sits exactly inside the TV glass area */
     .tv-text {
-        top: 20%;
-        left: 20%;
-        width: 32%;
+        top: 19%;
+        left: 32.5%;
+        width: 52%;
+        height: 47%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-2deg);
+        line-height: 1.5;
     }
 
     .tv-text > * {
-        font-size: 1.6vw;
-        margin-bottom: 0.4vw;
+        font-size: 2.1cqw;
+        margin-bottom: 1cqw;
     }
 
     .line2 {
-        font-size: 2.6vw !important;
+        font-size: 3.6cqw !important;
     }
 
     .start-btn {
-        font-size: 1.4vw;
-        padding: 0.8vw 1.6vw;
+        font-size: 1.9cqw;
+        padding: 1.2cqw 2.6cqw;
+        margin-top: 1cqw;
+        margin-bottom: 0;
     }
 
+    .star {
+        font-size: 3.5cqw;
+    }
+
+    /* Skills / Tech Arsenal */
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .tech-slot {
+        padding: 12px 6px 8px;
+    }
+
+    .tech-icon-box {
+        font-size: 2.2rem;
+    }
+
+    .tech-inspector-hud {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .inspector-desc {
+        font-size: 0.86rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .quest-header {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Mascot */
     .mascot-companion {
         bottom: 12px;
         right: 12px;
@@ -1516,7 +1663,241 @@ a {
     }
 
     .mascot-balloon {
-        max-width: 240px;
+        max-width: 230px;
         font-size: 0.8rem !important;
     }
+}
+
+/* Standard Mobile Devices (< 576px) */
+@media (max-width: 576px) {
+    body {
+        padding-top: 66px;
+    }
+
+    section[id] {
+        scroll-margin-top: 76px;
+    }
+
+    .container {
+        padding: 0 14px;
+    }
+
+    .navbar {
+        height: 66px;
+        padding: 0 12px;
+    }
+
+    .nav-menu {
+        top: 66px;
+    }
+
+    .logo-wrapper {
+        gap: 8px;
+    }
+
+    .logo-wrapper img {
+        width: 38px;
+    }
+
+    .logo-brand {
+        font-size: 0.82rem;
+    }
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+    .sfx-btn {
+        padding: 4px 8px !important;
+        font-size: 0.72rem !important;
+    }
+
+    .trophy-nav-btn {
+        padding: 4px 8px !important;
+        font-size: 0.72rem !important;
+    }
+
+    .mobile-menu-toggle {
+        padding: 4px 8px !important;
+        font-size: 0.85rem !important;
+    }
+
+
+    /* RPG HUD */
+    .rpg-hud-section {
+        margin-top: -15px;
+        padding-bottom: 24px;
+    }
+
+    .rpg-hud-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Containers */
+    .nes-container {
+        padding: 1.2rem 1rem !important;
+    }
+
+    .nes-container.with-title > .title {
+        font-size: 0.85rem !important;
+    }
+
+    /* About */
+    .character-card {
+        max-width: 100%;
+    }
+
+    .equipment-list li {
+        flex-wrap: wrap;
+        gap: 4px;
+        font-size: 0.82rem;
+    }
+
+    .about-cta-btns {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .about-cta-btns .nes-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Tech Arsenal */
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .tech-slot {
+        padding: 12px 6px 10px;
+    }
+
+    .tech-name {
+        font-size: 0.78rem;
+    }
+
+    .tech-inspector-hud {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .tech-inspector-hud::before {
+        display: none;
+    }
+
+    .inspector-title {
+        font-size: 0.95rem;
+    }
+
+    .inspector-desc {
+        font-size: 0.82rem;
+    }
+
+    .perks-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* Education */
+    .timeline-card {
+        padding: 16px !important;
+    }
+
+    .timeline-title {
+        font-size: 1rem;
+    }
+
+    .timeline-activities-list {
+        margin-left: 12px;
+        font-size: 0.86rem;
+    }
+
+    /* Projects */
+    .quest-actions .quest-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Interests */
+    .interests-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    /* Contact */
+    .channel-item {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .channel-label {
+        min-width: auto;
+    }
+
+    .contact-form button[type="submit"] {
+        width: 100%;
+        text-align: center;
+    }
+
+    .social-btns {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .social-btns .nes-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Mascot */
+    .mascot-companion {
+        bottom: 8px;
+        right: 8px;
+    }
+
+    .mascot-sprite-btn img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .mascot-balloon {
+        max-width: 190px;
+        font-size: 0.74rem !important;
+    }
+
+    /* Retro Scroll Dock */
+    .retro-scroll-dock {
+        top: 50%;
+        padding: 4px 2px;
+    }
+
+    .dock-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.82rem;
+        padding: 4px;
+    }
+}
+
+/* Compact Mobile (< 375px e.g. iPhone SE) */
+@media (max-width: 375px) {
+    .navbar {
+        padding: 0 8px;
+    }
+
+    .logo-brand {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 0.98rem;
+    }
+
+    .section-title .nes-icon {
+        display: none;
+    }
+
 }

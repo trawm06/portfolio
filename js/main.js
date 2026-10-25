@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Helper to bind sound effects to interactive elements
     function attachSoundEffects() {
-        const interactiveElements = document.querySelectorAll("a, button, .nes-btn, .nes-badge, .tech-slot, input, textarea");
+        const interactiveElements = document.querySelectorAll("a, button, .nes-btn, .dock-btn, .nes-badge, .tech-slot, input, textarea");
         interactiveElements.forEach(el => {
             el.removeEventListener("mouseenter", playHoverSound);
             el.removeEventListener("click", playClickSound);
@@ -368,7 +368,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const navMenu = document.getElementById("nav-menu");
 
     if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener("click", () => {
+        mobileMenuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
             navMenu.classList.toggle("mobile-open");
             playClickSound();
         });
@@ -378,14 +379,106 @@ document.addEventListener("DOMContentLoaded", () => {
                 navMenu.classList.remove("mobile-open");
             });
         });
+
+        document.addEventListener("click", (e) => {
+            if (navMenu.classList.contains("mobile-open") && !navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navMenu.classList.remove("mobile-open");
+            }
+        });
     }
 
     // ---------------------------------------------------
-    // 7. SCROLLSPY (ACTIVE NAV HIGHLIGHT)
+    // 7. SCROLLSPY & 2-WAY VERTICAL SCROLL DOCK
     // ---------------------------------------------------
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
+    const scrollDock = document.getElementById("scroll-dock");
+    const dockBtnUp = document.getElementById("dock-btn-up");
+    const dockBtnDown = document.getElementById("dock-btn-down");
+    const footerTopBtn = document.querySelector(".back-to-top");
 
+    function scrollToHeader(e) {
+        if (e) e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        playCoinSound();
+    }
+
+    function scrollToNextSection(e) {
+        if (e) e.preventDefault();
+        const headerHeight = window.innerWidth <= 576 ? 66 : 76;
+        const currentScroll = window.scrollY + headerHeight + 30;
+
+        const sectionElements = Array.from(document.querySelectorAll("section[id]"));
+        const nextSection = sectionElements.find(sec => sec.offsetTop > currentScroll);
+
+        if (nextSection) {
+            window.scrollTo({
+                top: nextSection.offsetTop - headerHeight,
+                behavior: "smooth"
+            });
+            playClickSound();
+        } else {
+            // Already at or past the last section, scroll to footer
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth"
+            });
+            playClickSound();
+        }
+    }
+
+    if (dockBtnUp) {
+        dockBtnUp.addEventListener("click", scrollToHeader);
+    }
+
+    if (dockBtnDown) {
+        dockBtnDown.addEventListener("click", scrollToNextSection);
+    }
+
+    if (footerTopBtn) {
+        footerTopBtn.addEventListener("click", scrollToHeader);
+    }
+
+    // Auto-hide scroll dock when there is NO movement / interaction
+    let dockHideTimer = null;
+    let isDockHovered = false;
+
+    function triggerDockVisibility() {
+        if (!scrollDock) return;
+        scrollDock.classList.add("is-visible");
+        clearTimeout(dockHideTimer);
+
+        if (!isDockHovered) {
+            dockHideTimer = setTimeout(() => {
+                scrollDock.classList.remove("is-visible");
+            }, 1800);
+        }
+    }
+
+    if (scrollDock) {
+        scrollDock.addEventListener("mouseenter", () => {
+            isDockHovered = true;
+            clearTimeout(dockHideTimer);
+            scrollDock.classList.add("is-visible");
+        });
+
+        scrollDock.addEventListener("mouseleave", () => {
+            isDockHovered = false;
+            dockHideTimer = setTimeout(() => {
+                scrollDock.classList.remove("is-visible");
+            }, 1800);
+        });
+    }
+
+    // Trigger visibility on mouse movement, scrolling, or touch swipe
+    window.addEventListener("mousemove", triggerDockVisibility, { passive: true });
+    window.addEventListener("scroll", triggerDockVisibility, { passive: true });
+    window.addEventListener("touchmove", triggerDockVisibility, { passive: true });
+
+    // Scrollspy for active nav link
     window.addEventListener("scroll", () => {
         let currentSectionId = "";
         const scrollPosition = window.scrollY + 120;

@@ -1,6 +1,7 @@
 // ===================================================
 // 8-BIT RETRO PORTFOLIO ENGINE - JAVASCRIPT
-// Features: Web Audio SFX, TV Typing, Mascot, Modals, Nav
+// Features: Web Audio SFX, Dynamic Projects Render, TV Typing,
+// Mascot Dialogues, Trophy Modal, Client-Side Form Validation
 // ===================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -132,6 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (e) {}
     }
 
+    // Sound FX: Error Buzz
+    function playErrorSound() {
+        playTone(220, "sawtooth", 0.18, 0.08);
+    }
+
     // Update SFX UI
     const sfxBtn = document.getElementById("sfx-toggle");
     const sfxIcon = document.getElementById("sfx-icon");
@@ -160,19 +166,86 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Attach sound effects to all interactive elements
-    const interactiveElements = document.querySelectorAll("a, button, .nes-btn, .nes-badge, input, textarea");
-    interactiveElements.forEach(el => {
-        el.addEventListener("mouseenter", () => {
-            playHoverSound();
+    // Helper to bind sound effects to interactive elements
+    function attachSoundEffects() {
+        const interactiveElements = document.querySelectorAll("a, button, .nes-btn, .nes-badge, .tech-slot, input, textarea");
+        interactiveElements.forEach(el => {
+            el.removeEventListener("mouseenter", playHoverSound);
+            el.removeEventListener("click", playClickSound);
+            el.addEventListener("mouseenter", playHoverSound);
+            el.addEventListener("click", playClickSound);
         });
-        el.addEventListener("click", () => {
-            playClickSound();
-        });
-    });
+    }
 
     // ---------------------------------------------------
-    // 2. TV SCREEN TYPING EFFECT
+    // 2. DYNAMIC PROJECTS RENDERING (DRY PRINCIPLE)
+    // Renders project cards from a structured data array
+    // ---------------------------------------------------
+    const projectsData = [
+        {
+            id: "PROJECT 01",
+            title: "FLUX MULTI FILE DOWNLOADER",
+            category: "MÔ HÌNH CLIENT–SERVER",
+            rank: "RANK: S",
+            image: "images/project_flux.jpg",
+            imageAlt: "Ảnh giao diện FLUX Multi File Downloader",
+            desc: "Ứng dụng tải nhiều tệp tin theo mô hình Client–Server, hỗ trợ tìm kiếm, quản lý và theo dõi tiến trình tải dữ liệu an toàn và ổn định.",
+            role: "Thiết kế một số chức năng giao diện, kiểm thử và viết báo cáo đồ án.",
+            tags: ["Python", "PySide6", "Socket", "TLS/SSL"],
+            githubUrl: "https://github.com/trawm06"
+        },
+        {
+            id: "PROJECT 02",
+            title: "QUẢN LÝ VẬT TƯ XÂY DỰNG",
+            category: "DATABASE & WAREHOUSE",
+            rank: "RANK: S",
+            image: "images/project_inventory.jpg",
+            imageAlt: "Ảnh giao diện Quản Lý Vật Tư Xây Dựng",
+            desc: "Hệ thống quản lý vật tư, kho hàng và các nghiệp vụ nhập, xuất, chuyển kho dành cho doanh nghiệp xây dựng với cơ sở dữ liệu quan hệ chặt chẽ.",
+            role: "Xây dựng chức năng chuyển kho, xử lý tương tranh dữ liệu và kiểm thử hệ thống.",
+            tags: ["Python", "Streamlit", "SQL Server", "Concurrency"],
+            githubUrl: "https://github.com/trawm06"
+        }
+    ];
+
+    function renderProjects() {
+        const projectsContainer = document.getElementById("projects-container");
+        if (!projectsContainer) return;
+
+        projectsContainer.innerHTML = projectsData.map(project => `
+            <div class="nes-container with-title is-rounded is-dark quest-card">
+                <p class="title">${project.id}</p>
+                <div>
+                    <div class="quest-img-wrapper">
+                        <img src="${project.image}" alt="${project.imageAlt}">
+                    </div>
+                    <div class="quest-header">
+                        <span class="quest-rank">${project.category}</span>
+                        <span class="quest-exp">${project.rank}</span>
+                    </div>
+                    <h3 class="quest-title">${project.title}</h3>
+                    <p class="quest-desc">${project.desc}</p>
+                    <div class="quest-role">
+                        <strong>Vai trò:</strong> ${project.role}
+                    </div>
+                    <div class="quest-tags">
+                        ${project.tags.map(tag => `<span class="quest-tag">${tag}</span>`).join("")}
+                    </div>
+                </div>
+                <div class="quest-actions">
+                    <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="nes-btn is-primary quest-btn">
+                        <i class="nes-icon github is-small"></i> GitHub Repo
+                    </a>
+                </div>
+            </div>
+        `).join("");
+    }
+
+    renderProjects();
+    attachSoundEffects();
+
+    // ---------------------------------------------------
+    // 3. TV SCREEN TYPING EFFECT
     // ---------------------------------------------------
     const lines = document.querySelectorAll(".tv-text p, .tv-text h1, .start-btn");
     const texts = Array.from(lines, line => line.textContent.trim());
@@ -218,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ---------------------------------------------------
-    // 3. INTERACTIVE CORNER MASCOT
+    // 4. INTERACTIVE CORNER MASCOT
     // ---------------------------------------------------
     const mascotSpriteBtn = document.getElementById("mascot-sprite-btn");
     const mascotBalloon = document.getElementById("mascot-balloon");
@@ -252,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ---------------------------------------------------
-    // 4. ACHIEVEMENTS / TROPHY MODAL
+    // 5. ACHIEVEMENTS / TROPHY MODAL
     // ---------------------------------------------------
     const trophyModal = document.getElementById("trophy-modal");
     const openTrophyBtn = document.getElementById("open-trophy-btn");
@@ -289,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ---------------------------------------------------
-    // 5. MOBILE MENU TOGGLE
+    // 6. MOBILE MENU TOGGLE
     // ---------------------------------------------------
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
     const navMenu = document.getElementById("nav-menu");
@@ -300,7 +373,6 @@ document.addEventListener("DOMContentLoaded", () => {
             playClickSound();
         });
 
-        // Close menu on nav link click
         navMenu.querySelectorAll(".nav-link").forEach(link => {
             link.addEventListener("click", () => {
                 navMenu.classList.remove("mobile-open");
@@ -309,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ---------------------------------------------------
-    // 6. SCROLLSPY (ACTIVE NAV HIGHLIGHT)
+    // 7. SCROLLSPY (ACTIVE NAV HIGHLIGHT)
     // ---------------------------------------------------
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -335,28 +407,156 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ---------------------------------------------------
-    // 7. CONTACT FORM SIMULATION
+    // 8. JAVASCRIPT CONTACT FORM VALIDATION
+    // Robust client-side validation with inline field errors
     // ---------------------------------------------------
     const contactForm = document.getElementById("retro-contact-form");
+    const nameInput = document.getElementById("contact-name");
+    const emailInput = document.getElementById("contact-email");
+    const messageInput = document.getElementById("contact-message");
+
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error");
+    const messageError = document.getElementById("message-error");
+    const formFeedback = document.getElementById("form-feedback");
+
+    function validateEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email.trim());
+    }
+
+    function clearError(input, errorElement) {
+        if (input) input.classList.remove("input-error");
+        if (errorElement) {
+            errorElement.textContent = "";
+            errorElement.classList.remove("active");
+        }
+    }
+
+    function showError(input, errorElement, message) {
+        if (input) input.classList.add("input-error");
+        if (errorElement) {
+            errorElement.textContent = `⚠ ${message}`;
+            errorElement.classList.add("active");
+        }
+    }
+
+    // Real-time error clearing on input
+    [nameInput, emailInput, messageInput].forEach(input => {
+        if (input) {
+            input.addEventListener("input", () => {
+                if (input === nameInput) clearError(nameInput, nameError);
+                if (input === emailInput) clearError(emailInput, emailError);
+                if (input === messageInput) clearError(messageInput, messageError);
+                if (formFeedback) formFeedback.classList.remove("active");
+            });
+        }
+    });
+
     if (contactForm) {
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            playPowerUpSound();
 
-            const name = document.getElementById("contact-name").value;
-            alert(`⚔️ QUEST ACCEPTED!\n\nCảm ơn ${name}! Lời nhắn của bạn đã được gửi thành công đến Thạch Thị Trâm.\nMình sẽ phản hồi bạn qua email hoặc số điện thoại trong thời gian sớm nhất!`);
-            contactForm.reset();
+            let isValid = true;
+
+            // 1. Validate Name
+            const nameVal = nameInput ? nameInput.value.trim() : "";
+            if (!nameVal) {
+                showError(nameInput, nameError, "Vui lòng nhập họ và tên của bạn!");
+                isValid = false;
+            } else if (nameVal.length < 2) {
+                showError(nameInput, nameError, "Họ và tên tối thiểu từ 2 ký tự trở lên!");
+                isValid = false;
+            } else {
+                clearError(nameInput, nameError);
+            }
+
+            // 2. Validate Email
+            const emailVal = emailInput ? emailInput.value.trim() : "";
+            if (!emailVal) {
+                showError(emailInput, emailError, "Vui lòng nhập địa chỉ email liên hệ!");
+                isValid = false;
+            } else if (!validateEmail(emailVal)) {
+                showError(emailInput, emailError, "Email không đúng định dạng (ví dụ: name@gmail.com)!");
+                isValid = false;
+            } else {
+                clearError(emailInput, emailError);
+            }
+
+            // 3. Validate Message
+            const messageVal = messageInput ? messageInput.value.trim() : "";
+            if (!messageVal) {
+                showError(messageInput, messageError, "Vui lòng nhập nội dung tin nhắn!");
+                isValid = false;
+            } else if (messageVal.length < 10) {
+                showError(messageInput, messageError, "Nội dung tin nhắn tối thiểu 10 ký tự!");
+                isValid = false;
+            } else {
+                clearError(messageInput, messageError);
+            }
+
+            // Handle submission outcome
+            if (isValid) {
+                playPowerUpSound();
+
+                if (formFeedback) {
+                    formFeedback.innerHTML = `⚔️ <strong>QUEST ACCEPTED!</strong><br>Cảm ơn <strong>${nameVal}</strong>! Lời nhắn của bạn đã được gửi thành công đến Thạch Thị Trâm. Mình sẽ phản hồi bạn qua email <strong>${emailVal}</strong> trong thời gian sớm nhất!`;
+                    formFeedback.classList.add("active");
+                }
+
+                contactForm.reset();
+            } else {
+                playErrorSound();
+            }
         });
     }
 
     // ---------------------------------------------------
-    // 8. RESUME / CV DOWNLOAD SIMULATION
+    // 9. RESUME / CV DOWNLOAD SIMULATION
     // ---------------------------------------------------
     const resumeBtn = document.getElementById("resume-btn");
     if (resumeBtn) {
         resumeBtn.addEventListener("click", () => {
             playCoinSound();
             alert("📄 [CV / RESUME]\n\nTính năng tải CV đang được chuẩn bị. Bạn có thể gửi email trực tiếp tới thachthitram2k6@gmail.com để nhận CV chi tiết nhé!");
+        });
+    }
+
+    // ---------------------------------------------------
+    // 10. TECH ARSENAL INSPECTOR INTERACTION
+    // Real-time HUD readout when hovering/clicking tech icons
+    // ---------------------------------------------------
+    const techSlots = document.querySelectorAll(".tech-slot");
+    const inspectorIcon = document.getElementById("inspector-icon");
+    const inspectorName = document.getElementById("inspector-name");
+    const inspectorStatus = document.getElementById("inspector-status");
+    const inspectorDesc = document.getElementById("inspector-desc");
+
+    if (techSlots.length > 0 && inspectorName && inspectorDesc) {
+        techSlots.forEach(slot => {
+            function activateSlot() {
+                techSlots.forEach(s => s.classList.remove("is-active"));
+                slot.classList.add("is-active");
+
+                const iconBox = slot.querySelector(".tech-icon-box");
+                const iconHtml = iconBox ? iconBox.innerHTML : "";
+                const techName = slot.getAttribute("data-tech") || "";
+                const techTag = slot.getAttribute("data-tag") || "ACTIVE";
+                const techDesc = slot.getAttribute("data-desc") || "";
+
+                if (inspectorIcon) inspectorIcon.innerHTML = iconHtml;
+                if (inspectorName) inspectorName.textContent = techName;
+                if (inspectorStatus) inspectorStatus.textContent = techTag;
+                if (inspectorDesc) inspectorDesc.textContent = techDesc;
+            }
+
+            slot.addEventListener("mouseenter", () => {
+                activateSlot();
+            });
+
+            slot.addEventListener("click", () => {
+                activateSlot();
+            });
         });
     }
 });

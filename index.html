@@ -14,6 +14,7 @@
     
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="css/nes.min.css">
+    <link rel="stylesheet" href="css/devicon.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -167,29 +168,14 @@
 
                         <!-- Career Goals Box -->
                         <div class="career-goals-box">
-                            <p style="color: var(--accent-pink); font-size: 0.8rem; margin-bottom: 12px; font-weight: bold;">
-                                🎯 MỤC TIÊU NGHỀ NGHIỆP
+                            <p class="career-goals-header">🎯 MỤC TIÊU NGHỀ NGHIỆP</p>
+                            <p class="career-goal-desc">
+                                Mục tiêu của mình là không ngừng trau dồi chuyên môn, nâng cao kỹ năng thực hành qua các dự án thực tế để phát triển thành một nhân sự vững vàng trong lĩnh vực Công nghệ thông tin, có khả năng vận dụng kiến thức linh hoạt và hiệu quả vào công việc.
                             </p>
-                            <div class="career-goal-item">
-                                <div class="career-goal-title">
-                                    <span class="nes-badge"><span class="is-warning">MỤC TIÊU NGẮN HẠN</span></span>
-                                </div>
-                                <p class="career-goal-desc">
-                                    Hoàn thiện kiến thức chuyên môn, nâng cao kỹ năng thực hành và tích lũy kinh nghiệm thực tế qua các đồ án và dự án công nghệ.
-                                </p>
-                            </div>
-                            <div class="career-goal-item">
-                                <div class="career-goal-title">
-                                    <span class="nes-badge"><span class="is-success">MỤC TIÊU DÀI HẠN</span></span>
-                                </div>
-                                <p class="career-goal-desc">
-                                    Trở thành một nhân sự có chuyên môn vững vàng trong lĩnh vực Công nghệ thông tin, có khả năng vận dụng kiến thức linh hoạt và hiệu quả vào công việc thực tế.
-                                </p>
-                            </div>
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="about-cta-btns" style="margin-top: 24px;">
+                        <div class="about-cta-btns">
                             <a href="#contact" class="nes-btn is-primary">⚔️ Let's Connect!</a>
                             <a href="#projects" class="nes-btn is-success">📜 Xem Dự Án</a>
                         </div>
@@ -200,50 +186,193 @@
     </section>
 
     <!-- ===================================================
-         SECTION 2: SKILLS – KỸ NĂNG
+         SECTION 2: SKILLS – KỸ NĂNG & CÔNG NGHỆ
          =================================================== -->
     <section id="skills" class="section skills-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
-                    <i class="nes-icon heart is-small"></i> SKILLS – KỸ NĂNG <i class="nes-icon heart is-small"></i>
+                    <i class="nes-icon heart is-small"></i> SKILLS – KỸ NĂNG & CÔNG NGHỆ <i class="nes-icon heart is-small"></i>
                 </h2>
-                <p class="section-subtitle">[ TECHNICAL ARSENAL & SOFT SKILLS ]</p>
+                <p class="section-subtitle">[ EQUIPPED TECH ARSENAL & CORE ABILITIES ]</p>
             </div>
 
-            <div class="skills-grid">
-                <!-- Kỹ năng chuyên môn -->
-                <div class="nes-container with-title is-dark skill-card">
-                    <p class="title">KỸ NĂNG CHUYÊN MÔN</p>
-                    <div class="badge-cloud">
-                        <div class="badge-item"><span class="nes-badge"><span class="is-error">HTML</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">CSS</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-warning">JavaScript (Cơ bản)</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-success">Python</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">SQL Server</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-dark">Git / GitHub</span></span></div>
+            <div class="skills-layout">
+                <!-- Main Tech Arsenal Container (Icon Grid) -->
+                <div class="nes-container with-title is-dark skills-main-card">
+                    <p class="title">TECH ARSENAL (KHO CÔNG NGHỆ)</p>
+                    
+                    <div class="tech-grid">
+                        <!-- HTML5 -->
+                        <div class="tech-slot is-active" data-tech="HTML5" data-tag="WEB STRUCTURE" data-icon="devicon-html5-plain colored" data-desc="Ngôn ngữ đánh dấu siêu văn bản, xây dựng cấu trúc website chuẩn ngữ nghĩa (Semantic HTML5) & tối ưu SEO.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-html5-plain colored"></i>
+                            </div>
+                            <span class="tech-name">HTML5</span>
+                            <span class="tech-badge is-web">WEB</span>
+                        </div>
+
+                        <!-- CSS3 -->
+                        <div class="tech-slot" data-tech="CSS3" data-tag="STYLING & DESIGN" data-icon="devicon-css3-plain colored" data-desc="Tạo kiểu giao diện, layout Flexbox / Grid, hiệu ứng động keyframe & thiết kế Responsive thích ứng đa màn hình.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-css3-plain colored"></i>
+                            </div>
+                            <span class="tech-name">CSS3</span>
+                            <span class="tech-badge is-web">STYLE</span>
+                        </div>
+
+                        <!-- JavaScript -->
+                        <div class="tech-slot" data-tech="JavaScript" data-tag="CORE SCRIPTING" data-icon="devicon-javascript-plain colored" data-desc="Lập trình logic xử lý sự kiện người dùng, tương tác DOM, hiệu ứng âm thanh Web Audio API & lập trình bất đồng bộ.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-javascript-plain colored"></i>
+                            </div>
+                            <span class="tech-name">JavaScript</span>
+                            <span class="tech-badge is-code">LOGIC</span>
+                        </div>
+
+                        <!-- Python -->
+                        <div class="tech-slot" data-tech="Python" data-tag="MAIN LANGUAGE" data-icon="devicon-python-plain colored" data-desc="Ngôn ngữ lập trình chính xây dựng phần mềm tải tệp đa luồng FLUX, giao diện Tkinter & mạng Socket Client-Server.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-python-plain colored"></i>
+                            </div>
+                            <span class="tech-name">Python</span>
+                            <span class="tech-badge is-code">CORE</span>
+                        </div>
+
+                        <!-- C / C++ -->
+                        <div class="tech-slot" data-tech="C / C++" data-tag="ALGORITHM FOUNDATION" data-icon="devicon-cplusplus-plain colored" data-desc="Nền tảng tư duy thuật toán, cấu trúc dữ liệu và giải thuật, quản lý bộ nhớ và lập trình hướng đối tượng tại UTH.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-cplusplus-plain colored"></i>
+                            </div>
+                            <span class="tech-name">C / C++</span>
+                            <span class="tech-badge is-code">ALGO</span>
+                        </div>
+
+                        <!-- Microsoft SQL Server -->
+                        <div class="tech-slot" data-tech="SQL Server" data-tag="RELATIONAL DATABASE" data-icon="devicon-microsoftsqlserver-plain colored" data-desc="Hệ quản trị cơ sở dữ liệu quan hệ, thiết kế lược đồ ERD, viết truy vấn SQL phức tạp, Stored Procedure & Trigger.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-microsoftsqlserver-plain colored"></i>
+                            </div>
+                            <span class="tech-name">SQL Server</span>
+                            <span class="tech-badge is-db">DATABASE</span>
+                        </div>
+
+                        <!-- Git -->
+                        <div class="tech-slot" data-tech="Git" data-tag="VERSION CONTROL" data-icon="devicon-git-plain colored" data-desc="Hệ thống quản lý phiên bản phân tán (VCS), theo dõi lịch sử commit, phân nhánh (branching) và giải quyết xung đột code.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-git-plain colored"></i>
+                            </div>
+                            <span class="tech-name">Git</span>
+                            <span class="tech-badge is-tool">VCS</span>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="tech-slot" data-tech="GitHub" data-tag="CLOUD REPOSITORY" data-icon="devicon-github-original" data-desc="Nền tảng lưu trữ mã nguồn, quản lý kho repository cá nhân, làm việc nhóm và CI/CD GitHub Pages.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-github-original"></i>
+                            </div>
+                            <span class="tech-name">GitHub</span>
+                            <span class="tech-badge is-tool">REPO</span>
+                        </div>
+
+                        <!-- VS Code -->
+                        <div class="tech-slot" data-tech="VS Code" data-tag="EDITOR & TOOLS" data-icon="devicon-vscode-plain colored" data-desc="Môi trường phát triển tích hợp (IDE) chính, cấu hình tiện ích mở rộng, debug mã nguồn và phím tắt hiệu năng cao.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-vscode-plain colored"></i>
+                            </div>
+                            <span class="tech-name">VS Code</span>
+                            <span class="tech-badge is-tool">IDE</span>
+                        </div>
+
+                        <!-- Figma -->
+                        <div class="tech-slot" data-tech="Figma" data-tag="UI/UX PROTOTYPING" data-icon="devicon-figma-plain colored" data-desc="Thiết kế giao diện người dùng (UI), nghiên cứu trải nghiệm (UX), xây dựng wireframe và prototype tương tác.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-figma-plain colored"></i>
+                            </div>
+                            <span class="tech-name">Figma</span>
+                            <span class="tech-badge is-ui">UI/UX</span>
+                        </div>
+
+                        <!-- Postman -->
+                        <div class="tech-slot" data-tech="Postman" data-tag="API TESTING" data-icon="devicon-postman-plain colored" data-desc="Công cụ kiểm thử và tương tác API, gửi yêu cầu HTTP (GET, POST, PUT, DELETE) và kiểm tra dữ liệu phản hồi JSON.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-postman-plain colored"></i>
+                            </div>
+                            <span class="tech-name">Postman</span>
+                            <span class="tech-badge is-tool">API</span>
+                        </div>
+
+                        <!-- Bash / Terminal -->
+                        <div class="tech-slot" data-tech="Bash / CLI" data-tag="COMMAND LINE" data-icon="devicon-bash-plain colored" data-desc="Thao tác dòng lệnh Command Line Interface, quản lý tiến trình, chạy script và cấu hình môi trường phát triển.">
+                            <div class="tech-icon-box">
+                                <i class="devicon-bash-plain colored"></i>
+                            </div>
+                            <span class="tech-name">Bash / CLI</span>
+                            <span class="tech-badge is-tool">CLI</span>
+                        </div>
+                    </div>
+
+                    <!-- RPG Item Inspector HUD -->
+                    <div class="tech-inspector-hud" id="tech-inspector">
+                        <div class="inspector-icon" id="inspector-icon">
+                            <i class="devicon-html5-plain colored"></i>
+                        </div>
+                        <div class="inspector-content">
+                            <div class="inspector-header">
+                                <span class="inspector-title" id="inspector-name">HTML5</span>
+                                <span class="inspector-status" id="inspector-status">WEB STRUCTURE</span>
+                            </div>
+                            <p class="inspector-desc" id="inspector-desc">
+                                Ngôn ngữ đánh dấu siêu văn bản, xây dựng cấu trúc website chuẩn ngữ nghĩa (Semantic HTML5) & tối ưu SEO.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Kỹ năng mềm -->
-                <div class="nes-container with-title is-dark skill-card">
-                    <p class="title">KỸ NĂNG MỀM</p>
-                    <div class="badge-cloud">
-                        <div class="badge-item"><span class="nes-badge"><span class="is-success">Làm việc nhóm</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-warning">Giải quyết vấn đề</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">Tự học (Self-learning)</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-error">Quản lý thời gian</span></span></div>
-                    </div>
-                </div>
+                <!-- Secondary Card: Passive Traits & Soft Skills -->
+                <div class="nes-container with-title is-dark skills-sub-card">
+                    <p class="title">NĂNG LỰC BỔ TRỢ (PASSIVE BUFFS)</p>
+                    
+                    <div class="perks-list">
+                        <div class="perk-item">
+                            <div class="perk-icon">
+                                <i class="nes-icon is-small heart"></i>
+                            </div>
+                            <div class="perk-info">
+                                <span class="perk-name">Làm Việc Nhóm (Teamwork)</span>
+                                <span class="perk-tag">Phối hợp nhịp nhàng trong đồ án & dự án thực tế</span>
+                            </div>
+                        </div>
 
-                <!-- Định hướng & Rèn luyện -->
-                <div class="nes-container with-title is-dark skill-card">
-                    <p class="title">ĐỊNH HƯỚNG & PHÁT TRIỂN</p>
-                    <div class="badge-cloud">
-                        <div class="badge-item"><span class="nes-badge"><span class="is-primary">Thiết kế UI/UX</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-warning">Kiểm thử phần mềm</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-success">Thuyết trình báo cáo</span></span></div>
-                        <div class="badge-item"><span class="nes-badge"><span class="is-dark">Lập trình Socket</span></span></div>
+                        <div class="perk-item">
+                            <div class="perk-icon">
+                                <i class="nes-icon is-small star"></i>
+                            </div>
+                            <div class="perk-info">
+                                <span class="perk-name">Giải Quyết Vấn Đề (Problem Solving)</span>
+                                <span class="perk-tag">Tư duy logic, gỡ lỗi và tối ưu hóa giải thuật</span>
+                            </div>
+                        </div>
+
+                        <div class="perk-item">
+                            <div class="perk-icon">
+                                <i class="nes-icon is-small coin"></i>
+                            </div>
+                            <div class="perk-info">
+                                <span class="perk-name">Tự Học & Thích Ứng (Self-Learning)</span>
+                                <span class="perk-tag">Chủ động nghiên cứu tài liệu kỹ thuật và công nghệ mới</span>
+                            </div>
+                        </div>
+
+                        <div class="perk-item">
+                            <div class="perk-icon">
+                                <i class="nes-icon is-small trophy"></i>
+                            </div>
+                            <div class="perk-info">
+                                <span class="perk-name">Kiểm Thử Phần Mềm (Testing & QA)</span>
+                                <span class="perk-tag">Phát hiện lỗi logic, kiểm tra ngoại lệ & hoàn thiện chức năng</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,10 +397,10 @@
                     <p class="title">TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH)</p>
                     <span class="timeline-time">🎓 HIỆN TẠI • SINH VIÊN CHÍNH QUY</span>
                     <h3 class="timeline-title">Ngành Công Nghệ Thông Tin – Viện Đào Tạo Chất Lượng Cao</h3>
-                    <p class="timeline-desc" style="margin-top: 12px;">
+                    <p class="timeline-desc">
                         <strong>Hoạt động tiêu biểu:</strong>
                     </p>
-                    <ul class="nes-list is-disc" style="font-size: 0.74rem; line-height: 1.8; color: #cfd0e6; margin-top: 8px;">
+                    <ul class="nes-list is-disc timeline-activities-list">
                         <li>Tham gia tích cực vào các đồ án nhóm, phối hợp hiệu quả cùng các thành viên.</li>
                         <li>Thực hành trực tiếp xây dựng ứng dụng phần mềm (Client–Server, Web/Desktop app, cơ sở dữ liệu).</li>
                         <li>Kiểm thử phần mềm, phát hiện lỗi và tối ưu hóa chức năng.</li>
@@ -294,7 +423,7 @@
                 <p class="section-subtitle">[ HIGHLIGHTED QUESTS & EXPERIENCES ]</p>
             </div>
 
-            <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+            <div class="projects-grid" id="projects-container">
                 <!-- Project 01: FLUX Multi File Downloader -->
                 <div class="nes-container with-title is-rounded is-dark quest-card">
                     <p class="title">PROJECT 01</p>
@@ -482,25 +611,29 @@
                 <!-- Contact Form -->
                 <div class="nes-container with-title is-dark form-card">
                     <p class="title">SEND MESSAGE</p>
-                    <form id="retro-contact-form" class="contact-form">
+                    <form id="retro-contact-form" class="contact-form" novalidate>
                         <div class="nes-field">
                             <label for="contact-name">Họ và tên:</label>
-                            <input type="text" id="contact-name" class="nes-input is-dark" placeholder="Ví dụ: Nguyễn Văn A" required>
+                            <input type="text" id="contact-name" class="nes-input is-dark" placeholder="Ví dụ: Nguyễn Văn A">
+                            <span class="field-error" id="name-error"></span>
                         </div>
 
                         <div class="nes-field">
                             <label for="contact-email">Email:</label>
-                            <input type="email" id="contact-email" class="nes-input is-dark" placeholder="email@example.com" required>
+                            <input type="email" id="contact-email" class="nes-input is-dark" placeholder="email@example.com">
+                            <span class="field-error" id="email-error"></span>
                         </div>
 
                         <div class="nes-field">
                             <label for="contact-message">Nội dung tin nhắn:</label>
-                            <textarea id="contact-message" class="nes-textarea is-dark" placeholder="Nhập nội dung lời nhắn tại đây..." rows="4" required></textarea>
+                            <textarea id="contact-message" class="nes-textarea is-dark" placeholder="Nhập nội dung lời nhắn tại đây..." rows="4"></textarea>
+                            <span class="field-error" id="message-error"></span>
                         </div>
 
                         <button type="submit" class="nes-btn is-success">
                             <i class="nes-icon heart is-small"></i> SEND MESSAGE
                         </button>
+                        <div class="form-feedback" id="form-feedback"></div>
                     </form>
                 </div>
             </div>

@@ -71,7 +71,6 @@ body::after {
 
 /* ===================================================
    UNIFIED DARK THEME FOR ALL NES.CSS COMPONENTS
-   (Prevents default white backgrounds from obscuring content)
    =================================================== */
 
 .nes-container {
@@ -513,6 +512,15 @@ a {
     border: 2px dashed #404163;
 }
 
+.career-goals-header {
+    color: var(--accent-pink);
+    font-family: var(--font-arcade);
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
 .career-goal-item {
     margin-bottom: 16px;
 }
@@ -539,42 +547,270 @@ a {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    margin-top: 24px;
 }
 
 /* ===================================================
-   SECTION 2: SKILLS – KỸ NĂNG
+   SECTION 2: SKILLS – KỸ NĂNG & CÔNG NGHỆ (ICON-CENTRIC)
    =================================================== */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 28px;
-}
-
-.skill-card {
-    background: var(--bg-card) !important;
+.skills-layout {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    gap: 32px;
 }
 
-.badge-cloud {
+.skills-main-card,
+.skills-sub-card {
+    background: var(--bg-card) !important;
+}
+
+/* Tech Icon Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.tech-slot {
+    background: #141424;
+    border: 3px solid #303150;
+    padding: 16px 10px 12px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    user-select: none;
+    border-radius: 4px;
+}
+
+.tech-slot:hover,
+.tech-slot.is-active {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.45), inset 0 0 10px rgba(0, 240, 255, 0.15);
+    background: #1a1a34;
+}
+
+.tech-icon-box {
+    font-size: 2.8rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.tech-slot:hover .tech-icon-box {
+    transform: scale(1.15);
+}
+
+.tech-name {
+    font-family: var(--font-arcade);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.tech-badge {
+    font-family: var(--font-arcade);
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-badge.is-web {
+    background: #e44d26;
+    color: #ffffff;
+}
+
+.tech-badge.is-code {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.tech-badge.is-db {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.tech-badge.is-tool {
+    background: #d97706;
+    color: #ffffff;
+}
+
+.tech-badge.is-ui {
+    background: #8b5cf6;
+    color: #ffffff;
+}
+
+/* Ensure bright visibility of GitHub icon on dark card */
+.devicon-github-original,
+.devicon-github-plain {
+    color: #ffffff !important;
+}
+
+/* RPG Item Inspector HUD */
+.tech-inspector-hud {
+    background: #0d0d18;
+    border: 2px solid var(--accent-cyan);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 14px rgba(0, 240, 255, 0.15);
+    border-radius: 4px;
+}
+
+.tech-inspector-hud::before {
+    content: "INSPECTOR HUD v1.0";
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    font-family: var(--font-pixel);
+    font-size: 0.55rem;
+    color: #555780;
+    letter-spacing: 1px;
+}
+
+.inspector-icon {
+    font-size: 2.8rem;
+    line-height: 1;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inspector-content {
+    flex: 1;
+}
+
+.inspector-header {
+    display: flex;
+    align-items: center;
     gap: 12px;
-    padding-top: 8px;
+    margin-bottom: 6px;
 }
 
-.badge-item {
-    cursor: default;
-    transition: transform 0.15s ease;
+.inspector-title {
+    font-family: var(--font-arcade);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
 }
 
-.badge-item:hover {
-    transform: translateY(-3px) scale(1.05);
+.inspector-status {
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    color: var(--accent-green);
+    background: rgba(0, 255, 102, 0.12);
+    padding: 2px 8px;
+    border: 1px solid var(--accent-green);
 }
 
-.badge-item .nes-badge {
-    height: 36px;
+.inspector-desc {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: #cfd0e6;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Passive Perks List */
+.perks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.perk-item {
+    background: #141424;
+    border: 2px solid #303150;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    border-radius: 4px;
+}
+
+.perk-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 10px rgba(255, 230, 0, 0.25);
+}
+
+.perk-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+}
+
+.perk-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.perk-name {
+    font-family: var(--font-arcade);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent-yellow);
+}
+
+.perk-tag {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #a6a8cc;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .tech-slot {
+        padding: 12px 6px 8px;
+    }
+
+    .tech-icon-box {
+        font-size: 2.2rem;
+    }
+
+    .tech-inspector-hud {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .inspector-desc {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* ===================================================
@@ -618,17 +854,19 @@ a {
     font-size: 0.95rem;
     line-height: 1.8;
     color: #ffffff;
+    margin-top: 12px;
 }
 
-.timeline-card .nes-list {
-    margin-left: 20px;
-}
-
-.timeline-card .nes-list li {
+.timeline-activities-list {
     font-family: var(--font-body);
     font-size: 0.92rem;
     line-height: 1.8;
-    color: #d8d9ec;
+    color: #cfd0e6;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+.timeline-activities-list li {
     margin-bottom: 6px;
 }
 
@@ -643,7 +881,7 @@ a {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 32px;
 }
 
@@ -813,7 +1051,7 @@ a {
 }
 
 /* ===================================================
-   SECTION 6: CONTACT – LIÊN HỆ
+   SECTION 6: CONTACT – LIÊN HỆ & FORM VALIDATION
    =================================================== */
 .contact-section {
     background: #1c1d30;
@@ -882,7 +1120,7 @@ a {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .nes-field label {
@@ -903,6 +1141,7 @@ a {
     background-color: var(--bg-darker) !important;
     color: #ffffff !important;
     border-color: #4a4b6c !important;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .contact-form .nes-input::placeholder,
@@ -914,6 +1153,55 @@ a {
 .contact-form .nes-textarea:focus {
     border-color: var(--accent-pink) !important;
     outline: none;
+}
+
+/* Inline Error & Success Feedback */
+.field-error {
+    display: none;
+    font-family: var(--font-arcade);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-red);
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+}
+
+.field-error.active {
+    display: block;
+    animation: retroPulse 0.3s ease;
+}
+
+.contact-form .nes-input.input-error,
+.contact-form .nes-textarea.input-error {
+    border-color: var(--accent-red) !important;
+    background-color: rgba(231, 110, 85, 0.12) !important;
+}
+
+.form-feedback {
+    display: none;
+    margin-top: 14px;
+    padding: 14px;
+    font-family: var(--font-arcade);
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 3px solid var(--accent-green);
+    background: rgba(146, 204, 65, 0.15);
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 3px 3px 0 #000;
+    line-height: 1.7;
+}
+
+.form-feedback.active {
+    display: block;
+}
+
+@keyframes retroPulse {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
 }
 
 .contact-form button[type="submit"] {

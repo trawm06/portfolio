@@ -1,4 +1,3 @@
-@import url('nes.min.css');
 
 /* ===================================================
    8-BIT RETRO PORTFOLIO - DESIGN SYSTEM & TOKENS
@@ -285,9 +284,24 @@ section[id] {
 .banner {
     width: 100%;
     aspect-ratio: 2.7 / 1;
-    background: url("../images/background1.png") center / 100% 100% no-repeat;
+    background: var(--bg-darker);
     position: relative;
     border-bottom: 4px solid #141424;
+}
+
+.banner-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.tech-svg {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    object-fit: contain;
 }
 
 /* TV screen text in pure 8-bit pixel font */
@@ -316,9 +330,14 @@ section[id] {
     white-space: nowrap !important;
 }
 
+.tv-text > p,
+.tv-text > h1 {
+    min-height: 1.8em;
+}
+
 .start-btn {
     display: inline-block;
-    visibility: hidden;
+    visibility: visible;
     margin-top: 0.8vw;
     padding: 0.5vw 1.2vw;
     background: #ffa2cb;
@@ -466,6 +485,7 @@ section[id] {
 
 .avatar-frame img {
     width: 100%;
+    height: auto;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
@@ -724,11 +744,6 @@ section[id] {
     color: #ffffff;
 }
 
-/* Ensure bright visibility of GitHub icon on dark card */
-.devicon-github-original,
-.devicon-github-plain {
-    color: #ffffff !important;
-}
 
 /* RPG Item Inspector HUD */
 .tech-inspector-hud {
@@ -1669,7 +1684,7 @@ section[id] {
         container-type: inline-size;
         aspect-ratio: 2.7 / 1;
         min-height: 0;
-        background: url("../images/background1.png") center / 100% 100% no-repeat;
+        background: var(--bg-darker);
     }
 
     .tv-text {
@@ -2057,4 +2072,13 @@ section[id] {
         display: none;
     }
 
+}
+
+/* Respect reduced motion and avoid persistent animation on constrained devices. */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }

@@ -10,12 +10,13 @@
     <!-- Google Fonts with 100% Vietnamese Diacritics Support -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400&family=Press+Start+2P&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
+    <link rel="preload" as="image" href="images/background1.webp" imagesrcset="images/background1-768.webp 768w, images/background1-1280.webp 1280w, images/background1.webp 2027w" imagesizes="100vw" fetchpriority="high">
+
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="css/nes.min.css">
-    <link rel="stylesheet" href="css/devicon.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=8c5ed46094">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
          =================================================== -->
     <header class="navbar" id="navbar">
         <a href="#home" class="logo-wrapper">
-            <img src="images/logo.png" alt="Logo Tram Dev">
+            <img src="images/logo.webp" width="160" height="106" decoding="async" alt="Logo Tram Dev">
             <span class="logo-brand">TRAM.DEV</span>
         </a>
 
@@ -62,6 +63,7 @@
          HERO BANNER (PIXEL TV WITH RETRO TYPING ANIMATION)
          =================================================== -->
     <section id="home" class="banner">
+        <img class="banner-image" src="images/background1.webp" srcset="images/background1-768.webp 768w, images/background1-1280.webp 1280w, images/background1.webp 2027w" sizes="100vw" width="2027" height="776" alt="" fetchpriority="high" decoding="async">
         <div class="tv-text">
             <p class="line1">Let's Play</p>
             <h1 class="line2">My Portfolio</h1>
@@ -122,7 +124,7 @@
                     </div>
                     <div class="cyber-body">
                         <div class="avatar-frame">
-                            <img src="images/avatar.jpg" alt="Avatar Thạch Thị Trâm">
+                            <img src="images/avatar.webp" width="640" height="853" decoding="async" loading="lazy" alt="Avatar Thạch Thị Trâm">
                         </div>
                         <h3 class="character-name">THẠCH THỊ TRÂM</h3>
 
@@ -201,55 +203,55 @@
                     
                     <div class="tech-grid">
                         <!-- HTML5 -->
-                        <div class="tech-slot is-active" data-tech="HTML5" data-tag="WEB STRUCTURE" data-icon="devicon-html5-plain colored" data-desc="Ngôn ngữ đánh dấu siêu văn bản, xây dựng cấu trúc website chuẩn ngữ nghĩa (Semantic HTML5) & tối ưu SEO.">
+                        <div class="tech-slot is-active" data-tech="HTML5" data-tag="WEB STRUCTURE" data-desc="Ngôn ngữ đánh dấu siêu văn bản, xây dựng cấu trúc website chuẩn ngữ nghĩa (Semantic HTML5) & tối ưu SEO.">
                             <div class="tech-icon-box">
-                                <i class="devicon-html5-plain colored"></i>
+                                <img class="tech-svg" src="images/icons/html5-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                             </div>
                             <span class="tech-name">HTML5</span>
                             <span class="tech-badge is-web">WEB</span>
                         </div>
 
                         <!-- CSS3 -->
-                        <div class="tech-slot" data-tech="CSS3" data-tag="STYLING & DESIGN" data-icon="devicon-css3-plain colored" data-desc="Tạo kiểu giao diện, layout Flexbox / Grid, hiệu ứng động keyframe & thiết kế Responsive thích ứng đa màn hình.">
+                        <div class="tech-slot" data-tech="CSS3" data-tag="STYLING & DESIGN" data-desc="Tạo kiểu giao diện, layout Flexbox / Grid, hiệu ứng động keyframe & thiết kế Responsive thích ứng đa màn hình.">
                             <div class="tech-icon-box">
-                                <i class="devicon-css3-plain colored"></i>
+                                <img class="tech-svg" src="images/icons/css3-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                             </div>
                             <span class="tech-name">CSS3</span>
                             <span class="tech-badge is-web">STYLE</span>
                         </div>
 
                         <!-- JavaScript (Cơ bản) -->
-                        <div class="tech-slot" data-tech="JavaScript (Cơ bản)" data-tag="CORE SCRIPTING" data-icon="devicon-javascript-plain colored" data-desc="Lập trình logic xử lý sự kiện người dùng, tương tác DOM, hiệu ứng âm thanh Web Audio API & lập trình bất đồng bộ.">
+                        <div class="tech-slot" data-tech="JavaScript (Cơ bản)" data-tag="CORE SCRIPTING" data-desc="Lập trình logic xử lý sự kiện người dùng, tương tác DOM, hiệu ứng âm thanh Web Audio API & lập trình bất đồng bộ.">
                             <div class="tech-icon-box">
-                                <i class="devicon-javascript-plain colored"></i>
+                                <img class="tech-svg" src="images/icons/javascript-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                             </div>
                             <span class="tech-name">JavaScript</span>
                             <span class="tech-badge is-code">CƠ BẢN</span>
                         </div>
 
                         <!-- Python -->
-                        <div class="tech-slot" data-tech="Python" data-tag="MAIN LANGUAGE" data-icon="devicon-python-plain colored" data-desc="Ngôn ngữ lập trình chính xây dựng phần mềm tải tệp đa luồng FLUX, giao diện Tkinter & mạng Socket Client-Server.">
+                        <div class="tech-slot" data-tech="Python" data-tag="MAIN LANGUAGE" data-desc="Ngôn ngữ lập trình chính xây dựng phần mềm tải tệp đa luồng FLUX, giao diện Tkinter & mạng Socket Client-Server.">
                             <div class="tech-icon-box">
-                                <i class="devicon-python-plain colored"></i>
+                                <img class="tech-svg" src="images/icons/python-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                             </div>
                             <span class="tech-name">Python</span>
                             <span class="tech-badge is-code">CORE</span>
                         </div>
 
                         <!-- Microsoft SQL Server -->
-                        <div class="tech-slot" data-tech="SQL Server" data-tag="RELATIONAL DATABASE" data-icon="devicon-microsoftsqlserver-plain colored" data-desc="Hệ quản trị cơ sở dữ liệu quan hệ, thiết kế lược đồ ERD, viết truy vấn SQL phức tạp, Stored Procedure & Trigger.">
+                        <div class="tech-slot" data-tech="SQL Server" data-tag="RELATIONAL DATABASE" data-desc="Hệ quản trị cơ sở dữ liệu quan hệ, thiết kế lược đồ ERD, viết truy vấn SQL phức tạp, Stored Procedure & Trigger.">
                             <div class="tech-icon-box">
-                                <i class="devicon-microsoftsqlserver-plain colored"></i>
+                                <img class="tech-svg" src="images/icons/microsoftsqlserver-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                             </div>
                             <span class="tech-name">SQL Server</span>
                             <span class="tech-badge is-db">DATABASE</span>
                         </div>
 
                         <!-- Git / GitHub -->
-                        <div class="tech-slot" data-tech="Git / GitHub" data-tag="VERSION CONTROL" data-icon="devicon-git-plain colored" data-desc="Hệ thống quản lý phiên bản Git, lưu trữ kho mã nguồn cá nhân, theo dõi lịch sử commit và làm việc nhóm qua GitHub.">
+                        <div class="tech-slot" data-tech="Git / GitHub" data-tag="VERSION CONTROL" data-desc="Hệ thống quản lý phiên bản Git, lưu trữ kho mã nguồn cá nhân, theo dõi lịch sử commit và làm việc nhóm qua GitHub.">
                             <div class="tech-icon-box git-github-box">
-                                <i class="devicon-git-plain colored"></i>
-                                <i class="devicon-github-original"></i>
+                                <img class="tech-svg" src="images/icons/git-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+                                <img class="tech-svg" src="images/icons/github-original.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                             </div>
                             <span class="tech-name">Git/GitHub</span>
                             <span class="tech-badge is-tool">VCS</span>
@@ -259,7 +261,7 @@
                     <!-- RPG Item Inspector HUD -->
                     <div class="tech-inspector-hud" id="tech-inspector">
                         <div class="inspector-icon" id="inspector-icon">
-                            <i class="devicon-html5-plain colored"></i>
+                            <img class="tech-svg" src="images/icons/html5-plain.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
                         </div>
                         <div class="inspector-content">
                             <div class="inspector-header">
@@ -382,7 +384,7 @@
                     <div>
                         <!-- Project Screenshot -->
                         <div class="quest-img-wrapper">
-                            <img src="images/project_flux.jpg" alt="Ảnh giao diện FLUX Multi File Downloader">
+                            <img src="images/project_flux.webp" width="1000" height="531" decoding="async" loading="lazy" alt="Ảnh giao diện FLUX Multi File Downloader">
                         </div>
 
                         <div class="quest-header">
@@ -414,7 +416,7 @@
                     <div>
                         <!-- Project Screenshot -->
                         <div class="quest-img-wrapper">
-                            <img src="images/project_inventory.jpg" alt="Ảnh giao diện Quản Lý Vật Tư Xây Dựng">
+                            <img src="images/project_inventory.webp" width="1000" height="468" decoding="async" loading="lazy" alt="Ảnh giao diện Quản Lý Vật Tư Xây Dựng">
                         </div>
 
                         <div class="quest-header">
@@ -535,7 +537,7 @@
         </div>
         <button type="button" class="mascot-sprite-btn" id="mascot-sprite-btn" aria-label="Interact with mascot">
             <span class="mascot-click-indicator">TAP ME!</span>
-            <img src="images/mascot.jpg" alt="Mascot Mage Girl">
+            <img src="images/mascot.webp" width="168" height="168" decoding="async" alt="Mascot Mage Girl">
         </button>
     </div>
 
@@ -632,7 +634,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=e2168687c9" defer></script>
 
 </body>
 

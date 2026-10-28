@@ -1,6 +1,6 @@
 // ===================================================
 // 8-BIT RETRO PORTFOLIO ENGINE - JAVASCRIPT
-// Features: Web Audio SFX, Dynamic Projects Render, TV Typing,
+// Features: Web Audio SFX, Static Portfolio Content,
 // Mascot Dialogues, Trophy Modal, Client-Side Form Validation
 // ===================================================
 
@@ -13,9 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let sfxEnabled = true;
 
     // Load saved sound preference
-    if (localStorage.getItem("retro_sfx_enabled") !== null) {
-        sfxEnabled = localStorage.getItem("retro_sfx_enabled") === "true";
-    }
+    try {
+        const savedSfx = localStorage.getItem("retro_sfx_enabled");
+        if (savedSfx !== null) sfxEnabled = savedSfx === "true";
+    } catch (e) { /* Storage can be unavailable in private or restricted contexts. */ }
 
     function initAudioContext() {
         if (!audioCtx) {
@@ -160,7 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
         sfxBtn.addEventListener("click", () => {
             initAudioContext();
             sfxEnabled = !sfxEnabled;
-            localStorage.setItem("retro_sfx_enabled", sfxEnabled.toString());
+            try {
+                localStorage.setItem("retro_sfx_enabled", sfxEnabled.toString());
+            } catch (e) { /* The current session can still toggle sound. */ }
             updateSfxUi();
             if (sfxEnabled) playCoinSound();
         });
@@ -177,111 +180,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ---------------------------------------------------
-    // 2. DYNAMIC PROJECTS RENDERING (DRY PRINCIPLE)
-    // Renders project cards from a structured data array
-    // ---------------------------------------------------
-    const projectsData = [
-        {
-            id: "PROJECT 01",
-            title: "FLUX MULTI FILE DOWNLOADER",
-            category: "MÔ HÌNH CLIENT–SERVER",
-            rank: "RANK: S",
-            image: "images/project_flux.jpg",
-            imageAlt: "Ảnh giao diện FLUX Multi File Downloader",
-            desc: "Ứng dụng tải nhiều tệp tin theo mô hình Client–Server, hỗ trợ tìm kiếm, quản lý và theo dõi tiến trình tải dữ liệu an toàn và ổn định.",
-            role: "Thiết kế một số chức năng giao diện, kiểm thử và viết báo cáo đồ án.",
-            tags: ["Python", "PySide6", "Socket", "TLS/SSL"]
-        },
-        {
-            id: "PROJECT 02",
-            title: "QUẢN LÝ VẬT TƯ XÂY DỰNG",
-            category: "DATABASE & WAREHOUSE",
-            rank: "RANK: S",
-            image: "images/project_inventory.jpg",
-            imageAlt: "Ảnh giao diện Quản Lý Vật Tư Xây Dựng",
-            desc: "Hệ thống quản lý vật tư, kho hàng và các nghiệp vụ nhập, xuất, chuyển kho dành cho doanh nghiệp xây dựng với cơ sở dữ liệu quan hệ chặt chẽ.",
-            role: "Xây dựng chức năng chuyển kho, xử lý tương tranh dữ liệu và kiểm thử hệ thống.",
-            tags: ["Python", "Streamlit", "SQL Server", "Concurrency"]
-        }
-    ];
-
-    function renderProjects() {
-        const projectsContainer = document.getElementById("projects-container");
-        if (!projectsContainer) return;
-
-        projectsContainer.innerHTML = projectsData.map(project => `
-            <div class="nes-container with-title is-rounded is-dark quest-card">
-                <p class="title">${project.id}</p>
-                <div>
-                    <div class="quest-img-wrapper">
-                        <img src="${project.image}" alt="${project.imageAlt}">
-                    </div>
-                    <div class="quest-header">
-                        <span class="quest-rank">${project.category}</span>
-                        <span class="quest-exp">${project.rank}</span>
-                    </div>
-                    <h3 class="quest-title">${project.title}</h3>
-                    <p class="quest-desc">${project.desc}</p>
-                    <div class="quest-role">
-                        <strong>Vai trò:</strong> ${project.role}
-                    </div>
-                    <div class="quest-tags">
-                        ${project.tags.map(tag => `<span class="quest-tag">${tag}</span>`).join("")}
-                    </div>
-                </div>
-            </div>
-        `).join("");
-    }
-
-    renderProjects();
+    // Projects and hero content are ready in HTML, including without JavaScript.
     attachSoundEffects();
-
-    // ---------------------------------------------------
-    // 3. TV SCREEN TYPING EFFECT
-    // ---------------------------------------------------
-    const lines = document.querySelectorAll(".tv-text p, .tv-text h1, .start-btn");
-    const texts = Array.from(lines, line => line.textContent.trim());
-
-    lines.forEach(line => {
-        line.textContent = "";
-    });
-
     const startBtn = document.querySelector(".start-btn");
-    if (startBtn) {
-        startBtn.classList.remove("show");
-    }
+    if (startBtn) startBtn.addEventListener("click", playPowerUpSound);
 
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    // Type real characters in sequence; START remains usable immediately.
+    // Text stays in HTML as a fallback when JavaScript is unavailable.
+    const tvLines = Array.from(document.querySelectorAll(".tv-text p, .tv-text h1"));
+    const tvTexts = tvLines.map(line => Array.from(line.textContent.trim()));
+    tvLines.forEach(line => { line.textContent = ""; });
 
-    async function typingEffect() {
-        await sleep(800);
-
-        for (let i = 0; i < lines.length; i++) {
-            if (lines[i].classList.contains("start-btn")) {
-                lines[i].classList.add("show");
-                lines[i].textContent = texts[i];
-                playCoinSound();
-                continue;
-            }
-
-            for (const char of texts[i]) {
-                lines[i].textContent += char;
-                playTone(520, "sine", 0.02, 0.015);
-                await sleep(35);
-            }
-
-            await sleep(250);
+    let tvLineIndex = 0;
+    let tvCharacterIndex = 0;
+    function typeNextTvCharacter() {
+        if (tvLineIndex >= tvLines.length) return;
+        const characters = tvTexts[tvLineIndex];
+        if (tvCharacterIndex < characters.length) {
+            tvLines[tvLineIndex].textContent += characters[tvCharacterIndex++];
+            setTimeout(typeNextTvCharacter, 40);
+        } else {
+            tvLineIndex++;
+            tvCharacterIndex = 0;
+            setTimeout(typeNextTvCharacter, 180);
         }
     }
-
-    typingEffect();
-
-    if (startBtn) {
-        startBtn.addEventListener("click", () => {
-            playPowerUpSound();
-        });
-    }
+    if (tvLines.length) setTimeout(typeNextTvCharacter, 250);
 
     // ---------------------------------------------------
     // 4. INTERACTIVE CORNER MASCOT

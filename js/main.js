@@ -191,8 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
             imageAlt: "Ảnh giao diện FLUX Multi File Downloader",
             desc: "Ứng dụng tải nhiều tệp tin theo mô hình Client–Server, hỗ trợ tìm kiếm, quản lý và theo dõi tiến trình tải dữ liệu an toàn và ổn định.",
             role: "Thiết kế một số chức năng giao diện, kiểm thử và viết báo cáo đồ án.",
-            tags: ["Python", "PySide6", "Socket", "TLS/SSL"],
-            githubUrl: "https://github.com/trawm06"
+            tags: ["Python", "PySide6", "Socket", "TLS/SSL"]
         },
         {
             id: "PROJECT 02",
@@ -203,8 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
             imageAlt: "Ảnh giao diện Quản Lý Vật Tư Xây Dựng",
             desc: "Hệ thống quản lý vật tư, kho hàng và các nghiệp vụ nhập, xuất, chuyển kho dành cho doanh nghiệp xây dựng với cơ sở dữ liệu quan hệ chặt chẽ.",
             role: "Xây dựng chức năng chuyển kho, xử lý tương tranh dữ liệu và kiểm thử hệ thống.",
-            tags: ["Python", "Streamlit", "SQL Server", "Concurrency"],
-            githubUrl: "https://github.com/trawm06"
+            tags: ["Python", "Streamlit", "SQL Server", "Concurrency"]
         }
     ];
 
@@ -231,11 +229,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="quest-tags">
                         ${project.tags.map(tag => `<span class="quest-tag">${tag}</span>`).join("")}
                     </div>
-                </div>
-                <div class="quest-actions">
-                    <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="nes-btn is-primary quest-btn">
-                        <i class="nes-icon github is-small"></i> GitHub Repo
-                    </a>
                 </div>
             </div>
         `).join("");
@@ -302,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Trâm hiện đang theo học ngành CNTT tại Trường ĐH Giao thông Vận tải TP.HCM (Viện Đào tạo CLC) 🎓",
         "Dự án nổi bật: FLUX Multi File Downloader & Quản Lý Vật Tư Xây Dựng 💻",
         "Kỹ năng: Python, PySide6, Socket, SQL Server, HTML/CSS/JS, Git/GitHub 🛠️",
-        "Sở thích của Trâm: Chơi game, xem phim và chỉnh sửa ảnh/video (Editing)! 🎮",
+        "Sở thích của Trâm: Xem phim, chơi game và móc len! 🎮",
         "Email kết nối: thachthitram2k6@gmail.com | SĐT: 0356796802 📞",
         "Cảm ơn bạn đã ghé thăm Portfolio của Trâm! Chúc bạn một ngày thật vui vẻ! 🌟"
     ];

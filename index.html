@@ -36,7 +36,6 @@
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#education" class="nav-link">Education</a>
             <a href="#projects" class="nav-link">Projects</a>
-            <a href="#interests" class="nav-link">Interests</a>
             <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
@@ -71,12 +70,6 @@
             <a href="#about" class="start-btn">▶ START</a>
         </div>
 
-        <!-- Twinkling Stars -->
-        <span class="star star1">✦</span>
-        <span class="star star2">✦</span>
-        <span class="star star3">✦</span>
-        <span class="star star4">✦</span>
-        <span class="star star5">✦</span>
     </section>
 
     <!-- ===================================================
@@ -121,60 +114,64 @@
             </div>
 
             <div class="about-grid">
-                <!-- Character Avatar & Equipment -->
-                <div class="character-card">
-                    <div class="avatar-frame">
-                        <img src="images/avatar.jpg" alt="Avatar Thạch Thị Trâm">
-                        <div class="character-tag">THẠCH THỊ TRÂM • IT STUDENT</div>
+                <!-- Window 1: Character sheet -->
+                <div class="cyber-window">
+                    <div class="cyber-titlebar">
+                        <span>CHAR_SHEET</span>
+                        <span class="cyber-controls" aria-hidden="true">_ ▫ ×</span>
                     </div>
+                    <div class="cyber-body">
+                        <div class="avatar-frame">
+                            <img src="images/avatar.jpg" alt="Avatar Thạch Thị Trâm">
+                        </div>
+                        <h3 class="character-name">THẠCH THỊ TRÂM</h3>
 
-                    <!-- RPG Equipment Slots -->
-                    <div class="nes-container is-dark with-title equipment-box">
-                        <p class="title">ACADEMIC INFO</p>
                         <ul class="equipment-list">
                             <li>
-                                <span class="equipment-slot">🎓 TRƯỜNG:</span>
-                                <span class="equipment-item">ĐH GTVT TP.HCM (UTH)</span>
+                                <span class="equipment-slot">TRƯỜNG</span>
+                                <span class="equipment-item">ĐH Giao thông Vận tải TP.HCM (UTH)</span>
                             </li>
                             <li>
-                                <span class="equipment-slot">🏛️ ĐƠN VỊ:</span>
-                                <span class="equipment-item">Viện Đào Tạo CLC</span>
+                                <span class="equipment-slot">NGÀNH</span>
+                                <span class="equipment-item">Công nghệ thông tin</span>
                             </li>
                             <li>
-                                <span class="equipment-slot">💻 CHUYÊN NGÀNH:</span>
-                                <span class="equipment-item">Công Nghệ Thông Tin</span>
+                                <span class="equipment-slot">NHẬP HỌC</span>
+                                <span class="equipment-item">2024 · Sinh viên năm 3</span>
                             </li>
                             <li>
-                                <span class="equipment-slot">✨ TINH THẦN:</span>
-                                <span class="equipment-item">Cầu tiến • Ham học hỏi</span>
+                                <span class="equipment-slot">SỞ THÍCH</span>
+                                <span class="equipment-item">Xem phim, chơi game, móc len</span>
+                            </li>
+                            <li>
+                                <span class="equipment-slot">CHỨNG CHỈ</span>
+                                <span class="equipment-item">Không có</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Bio & Career Goals -->
-                <div class="about-dialogue-col">
-                    <div class="nes-balloon from-left is-dark rpg-speech">
-                        <p>XIN CHÀO, TÔI LÀ <strong>THẠCH THỊ TRÂM</strong>! Sinh viên ngành Công nghệ thông tin.</p>
+                <!-- Window 2: Biography & career goals -->
+                <div class="cyber-window">
+                    <div class="cyber-titlebar">
+                        <span>MISSION_LOG</span>
+                        <span class="cyber-controls" aria-hidden="true">×</span>
                     </div>
+                    <div class="cyber-body">
+                        <p class="bio-kicker">&gt; PLAYER BIOGRAPHY</p>
+                        <h3 class="bio-heading"><span class="bio-title">Giới thiệu bản thân</span> <span class="bio-cursor">_</span></h3>
 
-                    <div class="nes-container with-title is-rounded is-dark bio-card">
-                        <p class="title">BIOGRAPHY</p>
                         <p class="bio-text">
-                            Mình hiện đang theo học ngành <strong>Công nghệ thông tin tại Trường Đại học Giao thông Vận tải TP.HCM (UTH)</strong>, thuộc Viện Đào tạo Chất lượng cao.
-                            <br><br>
-                            Mình luôn cố gắng học hỏi, tích lũy kiến thức và hoàn thiện bản thân thông qua quá trình học tập trên giảng đường và qua các dự án thực tế.
+                            Mình là sinh viên năm 3 ngành <strong>Công nghệ thông tin</strong> tại Trường Đại học Giao thông Vận tải TP.HCM. Mình yêu thích việc tìm hiểu cách phần mềm hoạt động, kiểm tra các chức năng và phát hiện những lỗi có thể ảnh hưởng đến trải nghiệm người dùng.
                         </p>
 
-                        <!-- Career Goals Box -->
                         <div class="career-goals-box">
                             <p class="career-goals-header">🎯 MỤC TIÊU NGHỀ NGHIỆP</p>
                             <p class="career-goal-desc">
-                                Mục tiêu của mình là không ngừng trau dồi chuyên môn, nâng cao kỹ năng thực hành qua các dự án thực tế để phát triển thành một nhân sự vững vàng trong lĩnh vực Công nghệ thông tin, có khả năng vận dụng kiến thức linh hoạt và hiệu quả vào công việc.
+                                Mục tiêu của mình là trở thành một <strong>Software Tester</strong> chuyên nghiệp, không ngừng rèn luyện tư duy logic, kỹ năng kiểm thử và tích lũy kinh nghiệm thực tế để góp phần nâng cao chất lượng sản phẩm phần mềm.
                             </p>
                         </div>
 
-                        <!-- Action Buttons -->
                         <div class="about-cta-btns">
                             <a href="#contact" class="nes-btn is-primary">⚔️ Let's Connect!</a>
                             <a href="#projects" class="nes-btn is-success">📜 Xem Dự Án</a>
@@ -339,20 +336,28 @@
             </div>
 
             <div class="timeline-list">
-                <!-- UTH Education Card -->
-                <div class="nes-container with-title is-rounded is-dark timeline-card">
-                    <p class="title">TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH)</p>
-                    <span class="timeline-time">🎓 HIỆN TẠI • SINH VIÊN CHÍNH QUY</span>
-                    <h3 class="timeline-title">Ngành Công Nghệ Thông Tin – Viện Đào Tạo Chất Lượng Cao</h3>
-                    <p class="timeline-desc">
-                        <strong>Hoạt động tiêu biểu:</strong>
-                    </p>
-                    <ul class="nes-list is-disc timeline-activities-list">
-                        <li>Tham gia tích cực vào các đồ án nhóm, phối hợp hiệu quả cùng các thành viên.</li>
-                        <li>Thực hành trực tiếp xây dựng ứng dụng phần mềm (Client–Server, Web/Desktop app, cơ sở dữ liệu).</li>
-                        <li>Kiểm thử phần mềm, phát hiện lỗi và tối ưu hóa chức năng.</li>
-                        <li>Thực hiện thuyết trình báo cáo và bảo vệ đồ án chuyên môn trước giảng viên.</li>
-                    </ul>
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="nes-container is-rounded is-dark timeline-card">
+                        <span class="timeline-time">2024 – HIỆN TẠI</span>
+                        <p class="timeline-desc">Theo học ngành Công nghệ thông tin tại UTH, tích lũy kiến thức về lập trình, cơ sở dữ liệu và phát triển phần mềm.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="nes-container is-rounded is-dark timeline-card">
+                        <span class="timeline-time">NĂM HỌC 2025 – 2026</span>
+                        <p class="timeline-desc">Tham gia các đồ án môn học, thực hành xây dựng ứng dụng, phân tích hệ thống và rèn luyện kỹ năng làm việc nhóm.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-marker"></span>
+                    <div class="nes-container is-rounded is-dark timeline-card">
+                        <span class="timeline-time">NĂM 2026</span>
+                        <p class="timeline-desc">Nghiên cứu các thuật toán An toàn thông tin, thực hành kiểm thử phần mềm và từng bước phát triển theo định hướng Software Tester.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -401,11 +406,6 @@
                             <span class="quest-tag">TLS/SSL</span>
                         </div>
                     </div>
-                    <div class="quest-actions">
-                        <a href="https://github.com/trawm06" target="_blank" rel="noopener noreferrer" class="nes-btn is-primary quest-btn">
-                            <i class="nes-icon github is-small"></i> GitHub Repo
-                        </a>
-                    </div>
                 </div>
 
                 <!-- Project 02: Quản Lý Vật Tư Xây Dựng -->
@@ -438,67 +438,6 @@
                             <span class="quest-tag">Concurrency</span>
                         </div>
                     </div>
-                    <div class="quest-actions">
-                        <a href="https://github.com/trawm06" target="_blank" rel="noopener noreferrer" class="nes-btn is-primary quest-btn">
-                            <i class="nes-icon github is-small"></i> GitHub Repo
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================================================
-         SECTION 5: INTERESTS – SỞ THÍCH
-         =================================================== -->
-    <section id="interests" class="section interests-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="nes-icon star is-small"></i> INTERESTS – SỞ THÍCH <i class="nes-icon star is-small"></i>
-                </h2>
-                <p class="section-subtitle">[ PASSIONS & LEISURE ACTIVITIES ]</p>
-            </div>
-
-            <div class="interests-grid">
-                <!-- Interest 1: Chơi Game -->
-                <div class="nes-container with-title is-dark interest-card">
-                    <p class="title">GAMING</p>
-                    <span class="interest-icon">🎮</span>
-                    <h3 class="interest-name">Chơi Game</h3>
-                    <p class="interest-desc">
-                        Niềm đam mê với thế giới game giải trí, rèn luyện tư duy phản xạ chiến thuật và tìm cảm hứng từ các phong cách thiết kế retro 8-bit sống động.
-                    </p>
-                </div>
-
-                <!-- Interest 2: Xem Phim -->
-                <div class="nes-container with-title is-dark interest-card">
-                    <p class="title">CINEMA</p>
-                    <span class="interest-icon">🎬</span>
-                    <h3 class="interest-name">Xem Phim</h3>
-                    <p class="interest-desc">
-                        Thư giãn sau những giờ code căng thẳng, khám phá những câu chuyện đa chiều và thưởng thức góc quay nghệ thuật, thẩm mỹ thị giác.
-                    </p>
-                </div>
-
-                <!-- Interest 3: Editing -->
-                <div class="nes-container with-title is-dark interest-card">
-                    <p class="title">CREATIVE</p>
-                    <span class="interest-icon">🎨</span>
-                    <h3 class="interest-name">Chỉnh Sửa Ảnh & Video</h3>
-                    <p class="interest-desc">
-                        Yêu thích thiết kế, chỉnh sửa hình ảnh và biên tập video (Editing), tạo nên những nội dung bắt mắt và giàu cảm xúc.
-                    </p>
-                </div>
-
-                <!-- Interest 4: Chứng chỉ / Hành trình -->
-                <div class="nes-container with-title is-dark interest-card">
-                    <p class="title">ACHIEVEMENT</p>
-                    <span class="interest-icon">📜</span>
-                    <h3 class="interest-name">Chứng Chỉ / Giải Thưởng</h3>
-                    <p class="interest-desc">
-                        Hiện tại chưa có chứng chỉ chính thức. Đang trên lộ trình học tập, rèn luyện và sẵn sàng chinh phục các kỳ thi chứng chỉ chuyên môn sắp tới!
-                    </p>
                 </div>
             </div>
         </div>
@@ -682,8 +621,6 @@
                 <a href="#education" class="footer-link">Education</a>
                 <span class="footer-dot">•</span>
                 <a href="#projects" class="footer-link">Projects</a>
-                <span class="footer-dot">•</span>
-                <a href="#interests" class="footer-link">Interests</a>
                 <span class="footer-dot">•</span>
                 <a href="#contact" class="footer-link">Contact</a>
             </div>

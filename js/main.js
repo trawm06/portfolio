@@ -542,31 +542,84 @@ document.addEventListener("DOMContentLoaded", () => {
     const inspectorStatus = document.getElementById("inspector-status");
     const inspectorDesc = document.getElementById("inspector-desc");
 
-    if (techSlots.length > 0 && inspectorName && inspectorDesc) {
-        techSlots.forEach(slot => {
-            function activateSlot() {
-                techSlots.forEach(s => s.classList.remove("is-active"));
-                slot.classList.add("is-active");
+    function skillRating(slot) {
+        const raw = (slot.getAttribute("data-level") || "").trim();
+        const value = Number(raw);
+        const valid = raw !== "" && Number.isFinite(value) && value >= 0 && value <= 100;
+        return {
+            valid,
+            rank: !valid ? "LV. —" : value <= 25 ? "LV. 01" : value <= 50 ? "LV. 02" : value <= 75 ? "LV. 03" : "LV. 04",
+            value: valid ? Math.round(value) : 0,
+            percent: valid ? `${Math.round(value)}%` : "—%",
+            label: !valid ? "Chưa tự đánh giá" : value <= 25 ? "Đang học nền tảng" :
+                value <= 50 ? "Làm được chức năng đơn giản" :
+                value <= 75 ? "Áp dụng được trong dự án" : "Xử lý được bài toán phức tạp"
+        };
+    }
 
-                const iconBox = slot.querySelector(".tech-icon-box");
-                const iconHtml = iconBox ? iconBox.innerHTML : "";
-                const techName = slot.getAttribute("data-tech") || "";
-                const techTag = slot.getAttribute("data-tag") || "ACTIVE";
-                const techDesc = slot.getAttribute("data-desc") || "";
-
-                if (inspectorIcon) inspectorIcon.innerHTML = iconHtml;
-                if (inspectorName) inspectorName.textContent = techName;
-                if (inspectorStatus) inspectorStatus.textContent = techTag;
-                if (inspectorDesc) inspectorDesc.textContent = techDesc;
+    function updateSkillRating(progress, percent, level, rating) {
+        if (progress) {
+            progress.value = rating.value;
+            progress.setAttribute("aria-valuetext", `${rating.percent} · ${rating.label}`);
+            const meter = progress.closest(".skill-meter");
+            if (meter) {
+                meter.style.setProperty("--skill-fill", `${rating.value}%`);
+                meter.setAttribute("data-rated", String(rating.valid));
             }
+            const owner = progress.closest(".tech-slot, .inspector-content");
+            const rank = owner?.querySelector(".skill-rank");
+            if (rank) rank.textContent = rating.rank;
+        }
+        if (percent) percent.textContent = rating.percent;
+        if (level) level.textContent = rating.label;
+    }
 
-            slot.addEventListener("mouseenter", () => {
-                activateSlot();
-            });
+    function updateSkillList(id, content) {
+        const list = document.getElementById(id);
+        if (!list) return;
+        const items = (content || "[Điền nội dung]").split("|").map(item => item.trim()).filter(Boolean);
+        list.replaceChildren(...items.map(text => {
+            const item = document.createElement("li");
+            item.textContent = text;
+            return item;
+        }));
+    }
 
-            slot.addEventListener("click", () => {
-                activateSlot();
+    if (techSlots.length > 0 && inspectorName && inspectorDesc) {
+        function activateSlot(slot) {
+            techSlots.forEach(other => {
+                other.classList.remove("is-active");
+                other.setAttribute("aria-pressed", "false");
             });
+            slot.classList.add("is-active");
+            slot.setAttribute("aria-pressed", "true");
+            const iconBox = slot.querySelector(".tech-icon-box");
+            if (inspectorIcon) inspectorIcon.innerHTML = iconBox ? iconBox.innerHTML : "";
+            inspectorName.textContent = slot.getAttribute("data-tech") || "";
+            const inspector = document.getElementById("tech-inspector");
+            if (inspector) {
+                const color = getComputedStyle(slot).getPropertyValue("--skill-color").trim();
+                inspector.style.setProperty("--skill-color", color || "#92cc41");
+            }
+            if (inspectorStatus) inspectorStatus.textContent = slot.getAttribute("data-tag") || "ACTIVE";
+            inspectorDesc.textContent = slot.getAttribute("data-desc") || "";
+            updateSkillRating(document.getElementById("inspector-progress"),
+                document.getElementById("inspector-percent"), document.getElementById("inspector-level"), skillRating(slot));
+            updateSkillList("inspector-known", slot.getAttribute("data-known"));
+            updateSkillList("inspector-learning", slot.getAttribute("data-learning"));
+            const evidence = document.getElementById("inspector-evidence");
+            if (evidence) {
+                const url = slot.getAttribute("data-evidence-url") || "#projects";
+                evidence.setAttribute("href", /^(#[\w-]+|https?:\/\/)/i.test(url) ? url : "#projects");
+                evidence.textContent = `${slot.getAttribute("data-evidence-title") || "Xem dự án"} →`;
+            }
+        }
+
+        techSlots.forEach(slot => {
+            updateSkillRating(slot.querySelector(".skill-progress"), slot.querySelector(".skill-percent"),
+                slot.querySelector(".skill-level"), skillRating(slot));
+            slot.addEventListener("click", () => activateSlot(slot));
         });
+        activateSlot(Array.from(techSlots).find(slot => slot.classList.contains("is-active")) || techSlots[0]);
     }
 });

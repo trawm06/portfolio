@@ -437,7 +437,8 @@ section[id] {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 380px minmax(0, 1fr);
+    align-items: start;
     gap: 36px;
 }
 
@@ -537,6 +538,68 @@ section[id] {
     font-family: var(--font-body);
     font-weight: 500;
     color: #ffffff;
+}
+
+.about-grid > .cyber-window {
+    min-width: 0;
+}
+
+.equipment-item {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.about-story {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.about-story-block {
+    padding-top: 20px;
+    border-top: 1px solid #3a3b59;
+    color: #e4e4f0;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.about-story-title {
+    margin-bottom: 12px;
+    font-family: var(--font-arcade);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--cyber-cyan);
+}
+
+.about-story-title span {
+    margin-right: 6px;
+    color: var(--cyber-pink);
+}
+
+.about-story-block p + p,
+.career-goal-desc + .career-goal-desc {
+    margin-top: 12px;
+}
+
+.about-story-block strong {
+    color: #ffe97a;
+}
+
+.about-practice-list {
+    margin: 12px 0 0;
+    padding-left: 20px;
+}
+
+.about-practice-list li + li {
+    margin-top: 10px;
+}
+
+.template-field {
+    color: #c8c2dc;
+    text-decoration: underline dotted #746b8d;
+    text-underline-offset: 4px;
 }
 
 /* Biography window */
@@ -655,11 +718,16 @@ section[id] {
     justify-content: center;
 }
 
-.git-github-box i {
+.git-github-box .tech-svg {
     font-size: 2.2rem;
 }
 
 .tech-slot {
+    width: 100%;
+    min-width: 0;
+    font: inherit;
+    color: inherit;
+    text-align: center;
     background: #141424;
     border: 3px solid #303150;
     padding: 16px 10px 12px;
@@ -816,6 +884,219 @@ section[id] {
     line-height: 1.6;
     margin: 0;
     text-wrap: pretty;
+}
+
+.skills-note {
+    margin: 0 0 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.tech-slot:focus-visible {
+    outline: 3px solid var(--accent-yellow);
+    outline-offset: 4px;
+}
+
+.tech-slot {
+    --skill-color: #ff9768;
+    background: linear-gradient(160deg, #202039, #11111f 70%);
+    box-shadow: 3px 3px 0 #080811;
+}
+
+.tech-slot[data-tech="CSS3"] { --skill-color: #6acbff; }
+.tech-slot[data-tech="JavaScript (Cơ bản)"] { --skill-color: #f7d51d; }
+.tech-slot[data-tech="Python"] { --skill-color: #8cde9a; }
+.tech-slot[data-tech="SQL Server"] { --skill-color: #ff8db5; }
+.tech-slot[data-tech="Git / GitHub"] { --skill-color: #bc9aff; }
+
+.tech-slot:hover,
+.tech-slot.is-active {
+    border-color: var(--skill-color);
+    box-shadow: 3px 3px 0 #080811, inset 0 0 22px #ffffff06;
+}
+
+.skill-rating {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 18px 0 12px;
+    padding-top: 14px;
+    border-top: 1px dashed #41415d;
+    font-family: var(--font-arcade);
+    text-align: left;
+}
+
+.skill-rank {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 6px;
+    border: 1px solid currentColor;
+    box-shadow: 2px 2px 0 #000;
+    color: var(--skill-color, var(--accent-green));
+    font-family: var(--font-pixel);
+    font-size: 0.52rem;
+    white-space: nowrap;
+}
+
+.skill-percent,
+#inspector-percent {
+    color: var(--skill-color, var(--accent-yellow));
+    font-family: var(--font-arcade);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1;
+    text-align: right;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.skill-level {
+    grid-column: 1 / -1;
+    min-height: 2.8em;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+
+.skill-meter {
+    --skill-fill: 0%;
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 8px;
+    background: #090a14;
+    border: 1px solid #45455f;
+    box-shadow: inset 0 2px 0 #000, 0 2px 0 #000;
+    text-align: left;
+}
+
+.skill-meter-caption {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 7px;
+    color: #a5a5c0;
+    font-family: var(--font-arcade);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.skill-meter-track {
+    display: block;
+    height: 16px;
+    background: #292a40;
+    /* Fixed divisions stay aligned even when the value is not a multiple of 10. */
+    -webkit-mask-image: repeating-linear-gradient(to right, #000 0 calc(10% - 3px), transparent calc(10% - 3px) 10%);
+    mask-image: repeating-linear-gradient(to right, #000 0 calc(10% - 3px), transparent calc(10% - 3px) 10%);
+}
+
+.skill-meter-fill {
+    display: block;
+    width: var(--skill-fill);
+    height: 100%;
+    background: var(--skill-color, var(--accent-green));
+    box-shadow: inset 0 3px 0 #ffffff45, inset 0 -3px 0 #0004;
+    transition: width 450ms steps(10, end);
+}
+
+/* Keep the native value available to assistive technologies. */
+.skill-meter .skill-progress {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+.skill-meter[data-rated="false"] .skill-meter-track {
+    background: repeating-linear-gradient(135deg, #292a40 0 4px, #1c1d30 4px 8px);
+}
+
+.inspector-rating {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 22px 0 14px;
+    font-family: var(--font-arcade);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+#inspector-percent { font-size: 2.8rem; }
+.inspector-rating .skill-rank { padding: 10px; }
+.skill-meter-large { padding: 12px; }
+.skill-meter-large .skill-meter-track { height: 24px; }
+
+.skill-meter-scale {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    margin-top: 9px;
+    font-family: var(--font-arcade);
+    font-size: 0.65rem;
+    color: #a5a5c0;
+}
+
+@media (max-width: 375px) {
+    .skill-rank { font-size: 0.45rem; padding: 4px; }
+    .skill-percent { font-size: 1.4rem; }
+    .skill-meter-scale { flex-wrap: wrap; }
+    .skill-meter-scale span { flex-basis: calc(50% - 6px); }
+    .skill-meter-caption { font-size: 0.58rem; }
+}
+
+.inspector-content { min-width: 0; width: 100%; }
+.inspector-header { flex-wrap: wrap; }
+.tech-inspector-hud { align-items: flex-start; }
+
+.inspector-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 22px;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: #cfd0e6;
+    overflow-wrap: anywhere;
+}
+
+.inspector-details h4 {
+    margin-bottom: 8px;
+    font-family: var(--font-arcade);
+    font-size: 0.95rem;
+    color: var(--accent-pink);
+}
+
+.inspector-details ul { margin: 0; padding-left: 18px; }
+.inspector-details li + li { margin-top: 6px; }
+
+.inspector-evidence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px dashed #3a3b59;
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+.inspector-evidence > span { color: var(--text-muted); }
+.inspector-evidence a { color: var(--accent-yellow); text-decoration: underline; }
+
+@media (max-width: 576px) {
+    .inspector-details { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .skill-level { font-size: 0.7rem; }
 }
 
 /* Passive Perks List */
